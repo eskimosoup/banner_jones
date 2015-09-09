@@ -50,5 +50,5 @@ production:
   reconnect: false
   database: banner_banner
   pool: 5
-  username: banner_banner
+  username: banner
   password: banjones47#!
