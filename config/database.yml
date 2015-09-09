@@ -18,18 +18,18 @@
 # SQLITE VERSION
 #development:
 #  adapter: sqlite3
-#  database: 
+#  database:
 
 # MYSQL VERSION
 development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: banner_banner
+  database: banner_jones
   pool: 5
-  username: banner_banner
-  password: banjones47#!
-  socket: /tmp/mysql.sock
+  username: root
+  password: tmedia
+  host: 192.168.0.122
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -52,4 +52,3 @@ production:
   pool: 5
   username: banner_banner
   password: banjones47#!
-  socket: /tmp/mysql.sock
