@@ -1,19 +1,19 @@
 class Payment < ActiveRecord::Base
 
-	acts_as_eskimagical
+  acts_as_eskimagical
 
-	serialize :gateway_reply
+  serialize :gateway_reply
 
-	validates_presence_of :invoice_number, :company_name, :contact_number
-	validates_format_of :amount, :with => /^\d+(\.\d{1,2})?$/
+  validates_presence_of :invoice_number, :company_name, :contact_number
+  validates_format_of :amount, :with => /^\d+(\.\d{1,2})?$/
 
-	before_create :generate_code
+  before_create :generate_code
 
-	def generate_code
-	  self.code = Payment.generate_code
-	end
+  def generate_code
+    self.code = Payment.generate_code
+  end
 
-	named_scope :position, :order => "position"
+  named_scope :position, :order => "position"
   named_scope :active, :conditions => ["recycled = ? AND display = ?", false, true]
   named_scope :recycled, :conditions => ["recycled = ?", true]
   named_scope :unrecycled, :conditions => ["recycled = ?", false]
@@ -24,7 +24,7 @@ class Payment < ActiveRecord::Base
   end
 
   def active?
-  	display? && !recycled?
+    display? && !recycled?
   end
 
   HUMANIZED_ATTRIBUTES = {

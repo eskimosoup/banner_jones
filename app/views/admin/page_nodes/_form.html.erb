@@ -1,48 +1,48 @@
 <% if @page_node.new_record? then action = "create" else action = "update" end %>
-	
+
 <% form_for @page_node, :url => {:controller => "admin/page_nodes", :action => action, :id => @page_node.id, :content_id => params[:content_id]}, :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
-  
+
   <fieldset>
-	<legend>Page Position</legend>
+  <legend>Page Position</legend>
     <p>
-		<% if f.object.can_be_moved? %>
-			<% if @current_administrator.super_admin? %>
-				<%= tree_select PageNode.roots, "page_node[parent_id]", f.object.parent_id, :include_blank => true, :insert_anywhere => true %>
-			<% else %>
-				<%= tree_select PageNode.roots, "page_node[parent_id]", f.object.parent_id %>
-			<% end %>
-		<% else %>
-			This pages location is locked
-		<% end %>
+    <% if f.object.can_be_moved? %>
+      <% if @current_administrator.super_admin? %>
+        <%= tree_select PageNode.roots, "page_node[parent_id]", f.object.parent_id, :include_blank => true, :insert_anywhere => true %>
+      <% else %>
+        <%= tree_select PageNode.roots, "page_node[parent_id]", f.object.parent_id %>
+      <% end %>
+    <% else %>
+      This pages location is locked
+    <% end %>
     </p>
-	</fieldset>
-	<fieldset>
-	<legend>Alternate Header</legend>
-		<p>
-			<%= f.label :alternate_header %>
-			<%= f.check_box :alternate_header %>
-		</p>
-	</fieldset>
-  
+  </fieldset>
+  <fieldset>
+  <legend>Alternate Header</legend>
+    <p>
+      <%= f.label :alternate_header %>
+      <%= f.check_box :alternate_header %>
+    </p>
+  </fieldset>
+
   <% f.fields_for :page_contents, @page_content do |builder| %>
-  	<%= render "admin/page_contents/#{f.object.likely_layout}", :f => builder %>
+    <%= render "admin/page_contents/#{f.object.likely_layout}", :f => builder %>
   <% end %>
-  
-	<% if @current_administrator.super_admin? %>
+
+  <% if @current_administrator.super_admin? %>
   <%= toggle_fieldset "Souper Admin Properties" %>
-	
+
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  
+
   <p>
     <%= f.label :access_key %><br />
     <%= f.text_field :access_key %>
   </p>
-	
-	<p>
+
+  <p>
     <%= f.label :can_be_moved %>
     <%= f.check_box :can_be_moved %>
   </p>
@@ -56,17 +56,17 @@
     <%= f.label :can_be_deleted %>
     <%= f.check_box :can_be_deleted %>
   </p>
-  
+
   <p>
     <%= f.label :can_have_children %>
     <%= f.check_box :can_have_children %>
   </p>
-  
+
   <p>
     <%= f.label :display_in_navigation %>
     <%= f.check_box :display_in_navigation %>
   </p>
-  
+
   <p>
     <%= f.label :special_menu %>
     <%= f.check_box :special_menu %>
@@ -76,12 +76,12 @@
     <%= f.label :controller %><br />
     <%= f.text_field :controller %>
   </p>
-  
+
   <p>
     <%= f.label :action %><br />
     <%= f.text_field :action %>
   </p>
-  
+
   <p>
     <%= f.label :model %><br />
     <%= f.text_field :model %>
@@ -91,13 +91,13 @@
     <%= f.label :layout %><br />
     <%= f.text_field :layout, :value => f.object.likely_layout %>
   </p>
-  
+
   <p>
     <%= f.label :stylesheet %><br />
     <%= f.text_field :stylesheet %>
   </p>
   </fieldset>
-	<% end %>  
+  <% end %>
 
   <p><%= f.submit "Submit" %></p>
 <% end %>

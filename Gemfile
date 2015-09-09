@@ -4,7 +4,7 @@ gem 'mysql', '~> 2.9.1'
 
 gem 'acts_as_tree', '~> 0.1.1'
 gem 'calendar_date_select', '~> 1.15'
-gem "recaptcha", "0.3.1"
+gem "recaptcha", "0.3.1", :require => "recaptcha/rails"
 gem "curb", "0.7.12"
 gem "acts-as-taggable-on", "2.0.6"
 gem "authlogic", "2.1.6"

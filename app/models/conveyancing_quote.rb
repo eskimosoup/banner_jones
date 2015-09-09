@@ -1,40 +1,40 @@
 class ConveyancingQuote < ActiveRecord::Base
 
   VAT = 20
-	
-	acts_as_eskimagical
-	
+
+  acts_as_eskimagical
+
   validates_presence_of :title, :first_names, :last_name, :phone, :email, :conveyancing_type
-	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-	validates_numericality_of :purchase_amount, :greater_than => 0, :if => Proc.new{|x| x.purchase_amount? }
-	validates_numericality_of :sale_amount, :greater_than => 0, :if => Proc.new{|x| x.sale_amount? }
-	validates_numericality_of :remortgage_amount, :greater_than => 0, :if => Proc.new{|x| x.remortgage_amount? }
-	validates_numericality_of :equity_amount, :greater_than => 0, :if => Proc.new{|x| x.equity_amount? }
-		
-	validate :check_amounts
-	
-	before_create  :set_costs
-	before_create  :generate_passcode
-	
-	before_destroy :remove_files
-	
-	named_scope :position, :order => "position"
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates_numericality_of :purchase_amount, :greater_than => 0, :if => Proc.new{|x| x.purchase_amount? }
+  validates_numericality_of :sale_amount, :greater_than => 0, :if => Proc.new{|x| x.sale_amount? }
+  validates_numericality_of :remortgage_amount, :greater_than => 0, :if => Proc.new{|x| x.remortgage_amount? }
+  validates_numericality_of :equity_amount, :greater_than => 0, :if => Proc.new{|x| x.equity_amount? }
+
+  validate :check_amounts
+
+  before_create  :set_costs
+  before_create  :generate_passcode
+
+  before_destroy :remove_files
+
+  named_scope :position, :order => "position"
   named_scope :active, :conditions => ["recycled = ? AND display = ?", false, true]
   named_scope :recycled, :conditions => ["recycled = ?", true]
   named_scope :unrecycled, :conditions => ["recycled = ?", false]
-  
+
   def generate_passcode
     require 'active_support/secure_random'
     self.passcode = ActiveSupport::SecureRandom.hex(16)
   end
-  
+
   def remove_files
     FileUtils.rm_rf(self.pdf_folder)
   end
-  
-	def check_amounts
+
+  def check_amounts
     case conveyancing_type
-    when "1"  
+    when "1"
       errors.add(:sale_amount, "can't be blank") if sale_amount.blank?
     when "2"
       errors.add(:purchase_amount, "can't be blank") if purchase_amount.blank?
@@ -50,10 +50,10 @@ class ConveyancingQuote < ActiveRecord::Base
       errors.add(:equity_amount, "can't be blank") if equity_amount.blank?
     end
   end
-  
+
   def set_costs
     case conveyancing_type
-    when "1"  
+    when "1"
       self.sale_fees = calculated_sale_fees
     when "2"
       self.purchase_fees = calculated_purchase_fees
@@ -76,7 +76,7 @@ class ConveyancingQuote < ActiveRecord::Base
       self.fixed_fee = 325
     end
   end
-  
+
   def calculated_sale_fees
     if sale_amount <= 100000
       400.00
@@ -106,7 +106,7 @@ class ConveyancingQuote < ActiveRecord::Base
       650.00
     end
   end
-  
+
   def calculated_land_reg_fees
     amount = remortgage_amount
     if amount <= 100000
@@ -121,7 +121,7 @@ class ConveyancingQuote < ActiveRecord::Base
       260.00
     end
   end
-  
+
   def calculated_purchasing_land_reg_fees
     amount = purchase_amount
     if amount <= 80000
@@ -136,9 +136,9 @@ class ConveyancingQuote < ActiveRecord::Base
       270.00
     else
       455.00
-    end  
+    end
   end
-  
+
   def calculated_stamp_duty
     if purchase_amount <= 125000
       0
@@ -150,15 +150,15 @@ class ConveyancingQuote < ActiveRecord::Base
       ((purchase_amount/100.00) * 4.00).to_i
     end
   end
-  
+
   def active?
-  	display? && !recycled?
+    display? && !recycled?
   end
 
   def self.titles
     ["Mr","Mrs","Miss","Ms","Dr", "Sir", "The Right Hon"]
-  end  
-  
+  end
+
   def self.conveyancing_types
     [
       ["Sale","1"],
@@ -170,7 +170,7 @@ class ConveyancingQuote < ActiveRecord::Base
       ["Equity Release","7"]
     ]
   end
-  
+
   def self.conveyancing_types_to_form_partial(type)
     case type
       when "1"
@@ -189,7 +189,7 @@ class ConveyancingQuote < ActiveRecord::Base
         "equity_release"
     end
   end
-  
+
   def partial_name
     for type in ConveyancingQuote.conveyancing_types
       if type.last == conveyancing_type
@@ -197,7 +197,7 @@ class ConveyancingQuote < ActiveRecord::Base
       end
     end
   end
-  
+
   def form_partial
     if conveyancing_type
       "conveyancing_quotes/form/#{partial_name}"
@@ -205,15 +205,15 @@ class ConveyancingQuote < ActiveRecord::Base
       nil
     end
   end
-  
+
   def show_partial
     "conveyancing_quotes/show/#{partial_name}"
   end
-  
+
   def self.dates
     ["Now", "This Month", "Next 3 Months", "Not Sure"]
   end
-  
+
   def subtotal
     ret = 0
     ret += sale_fees if sale_fees
@@ -221,30 +221,30 @@ class ConveyancingQuote < ActiveRecord::Base
     ret += fixed_fee if fixed_fee
     return ret
   end
-  
+
   def vat
    (subtotal/100.00) * VAT
   end
-  
+
   def pdf_folder
     File.join(RAILS_ROOT, 'public', 'assets', 'quotes', self.id.to_s)
   end
-  
+
   def pdf_path
     File.join(pdf_folder, 'quote.pdf')
   end
-  
+
   def generate_pdf(html)
     FileUtils.mkpath(pdf_folder)
-    pdf = PDFKit.new(html)    
-    pdf.to_file(pdf_path)    
+    pdf = PDFKit.new(html)
+    pdf.to_file(pdf_path)
   end
-  
+
   def total
     ret = 0
     ret += subtotal
-    ret += vat    
+    ret += vat
     return ret
   end
- 
+
 end

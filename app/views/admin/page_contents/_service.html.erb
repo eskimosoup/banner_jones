@@ -1,32 +1,32 @@
 <%= toggle_fieldset_controls %>
 
 <%= toggle_fieldset "Content", "content", true %>
-	<p>
-	  <%= f.label "SEO Page Title" %><br />
-	  <%= f.text_field :title %>
-	</p>
+  <p>
+    <%= f.label "SEO Page Title" %><br />
+    <%= f.text_field :title %>
+  </p>
 
     <p>
       <%= f.label "Displayed Page Title (will fall back to SEO Page Title if blank)" %><br />
       <%= f.text_field :page_main_title %>
     </p>
 
-	<p>
-	  <%= f.label :main_content %><br />
-	  <%= f.advanced_text_area :main_content %>
-	</p>
+  <p>
+    <%= f.label :main_content %><br />
+    <%= f.advanced_text_area :main_content %>
+  </p>
 </fieldset>
 
 <%= toggle_fieldset "Highlight" %>
-	<p>
-	  <%= f.label :highlight_style %><br />
-	  <%= f.select :highlight_style, [["Family", "family_highlight"], ["Business", "business_highlight"], ["Other", "other_highlight"]] %>
-	</p>
+  <p>
+    <%= f.label :highlight_style %><br />
+    <%= f.select :highlight_style, [["Family", "family_highlight"], ["Business", "business_highlight"], ["Other", "other_highlight"]] %>
+  </p>
 
-	<p>
-	  <%= f.label :highlight_content %><br />
-	  <%= f.simple_text_area :highlight_content %>
-	</p>
+  <p>
+    <%= f.label :highlight_content %><br />
+    <%= f.simple_text_area :highlight_content %>
+  </p>
 
   <p>
     <%= f.helpful_label :highlight_link, "Internal highlight link", "Select a page on the website to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
@@ -38,20 +38,20 @@
     <%= f.text_field :highlight_external_link %>
   </p>
 
-	<%= image_field_tag f, "page_node[page_contents_attributes][0]", :highlight_image, :field_id => "page_node_page_contents_attributes_0" %>
+  <%= image_field_tag f, "page_node[page_contents_attributes][0]", :highlight_image, :field_id => "page_node_page_contents_attributes_0" %>
 </fieldset>
 
 
 <%= toggle_fieldset "Highlight #2" %>
-	<p>
-	  <%= f.label :highlight_2_style %><br />
-	  <%= f.select :highlight_2_style, [["Family", "family_highlight"], ["Business", "business_highlight"], ["Other", "other_highlight"]] %>
-	</p>
+  <p>
+    <%= f.label :highlight_2_style %><br />
+    <%= f.select :highlight_2_style, [["Family", "family_highlight"], ["Business", "business_highlight"], ["Other", "other_highlight"]] %>
+  </p>
 
-	<p>
-	  <%= f.label :highlight_2_content %><br />
-	  <%= f.simple_text_area :highlight_2_content %>
-	</p>
+  <p>
+    <%= f.label :highlight_2_content %><br />
+    <%= f.simple_text_area :highlight_2_content %>
+  </p>
 
   <p>
     <%= f.helpful_label :highlight_2_link, "Internal highlight link", "Select a page on the website to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
@@ -63,7 +63,7 @@
     <%= f.text_field :highlight_2_ext_link %>
   </p>
 
-	<%= image_field_tag f, "page_node[page_contents_attributes][0]", :highlight_2_image, :field_id => "page_node_page_contents_attributes_0" %>
+  <%= image_field_tag f, "page_node[page_contents_attributes][0]", :highlight_2_image, :field_id => "page_node_page_contents_attributes_0" %>
 </fieldset>
 
 <%= toggle_fieldset "Page Documents" %>
@@ -104,26 +104,26 @@
 <% end %>
 
 <%= toggle_fieldset "Related Content" %>
-	<p>
-  	<%= f.subscription_select %>
+  <p>
+    <%= f.subscription_select %>
   </p>
 </fieldset>
 
 <%= toggle_fieldset "Additional Information" %>
-	<p>
-	  <%= f.label :navigation_title %><br />
-	  <%= f.text_field :navigation_title %>
-	</p>
+  <p>
+    <%= f.label :navigation_title %><br />
+    <%= f.text_field :navigation_title %>
+  </p>
 
-	<p>
-	  <%= f.label :meta_description %><br />
-	  <%= f.text_area :meta_description %>
-	</p>
+  <p>
+    <%= f.label :meta_description %><br />
+    <%= f.text_area :meta_description %>
+  </p>
 
-	<p>
-	  <%= f.label :meta_tags %><br />
-	  <%= f.text_area :meta_tags %>
-	</p>
+  <p>
+    <%= f.label :meta_tags %><br />
+    <%= f.text_area :meta_tags %>
+  </p>
 </fieldset>
 
 <fieldset>

@@ -9,7 +9,7 @@
         <%= link_to image_tag(team_member.image.url(:index_page), :alt => team_member.image_alt ), link %>
     <% end %>
   <% else %>
-  	<%= link_to image_tag("no_image.gif", {:size => "164x164"}), link %>
+    <%= link_to image_tag("no_image.gif", {:size => "164x164"}), link %>
   <% end %>
   <p>
     <%= link_to h(team_member.name), link %><br />

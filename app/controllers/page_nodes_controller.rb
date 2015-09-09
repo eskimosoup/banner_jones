@@ -13,11 +13,11 @@ class PageNodesController < ApplicationController
     end
 
     if @page_node.controller? && @page_node.action?
-    	redirect_to url_for(:controller => @page_node.controller, :action => @page_node.action)
-    	return
+      redirect_to url_for(:controller => @page_node.controller, :action => @page_node.action)
+      return
     elsif @page_node.controller?
-    	redirect_to url_for(@page_node.controller)
-    	return
+      redirect_to url_for(@page_node.controller)
+      return
     end
 
     if @page_node.layout == "calculator"

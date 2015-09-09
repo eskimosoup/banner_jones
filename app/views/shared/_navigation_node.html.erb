@@ -1,6 +1,6 @@
 <% for node in nodes %>
   <% if  node.display_in_navigation? && node.display? %>
-	  <li>
+    <li>
       <% unless node.alternate_header? %>
         <% children = PageNode.children(node.id).order(:position).active.navigation %>
         <%- if @current_page_node && (@current_page_node == node || @current_page_node.ancestors.include?(node)) -%>
@@ -34,6 +34,6 @@
           <%= yield "left_navigation_#{node.id}"%>
         <% end %>
       <% end %>
-	  </li>
-	<%- end -%>
+    </li>
+  <%- end -%>
 <%- end -%>

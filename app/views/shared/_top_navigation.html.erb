@@ -1,5 +1,5 @@
 <ul id="p7menubar" class="hide-for-small">
-	<% for page_node in PageNode.active.position.roots.navigation %>
+  <% for page_node in PageNode.active.position.roots.navigation %>
     <% options = {} %>
     <% if @current_page_node && (@current_page_node == page_node || @current_page_node.ancestors.include?(page_node)) %>
       <% options.merge!(:class => "highlight") %>
@@ -37,8 +37,8 @@
             <div>
               <% offset1 = (mod.to_f/2.0).ceil %>
               <% #for child in children[0..split1-1]
-							for child in children[0..0]
-							%>
+              for child in children[0..0]
+              %>
                 <li class="business_top_title"><%= link_to child.navigation_title, url_for(child.path), :class => "business_arrow" %></li>
 
                 <% for grandchild in PageNode.children(child.id).active.navigation %>
@@ -51,8 +51,8 @@
             <div>
               <% offset2 = (mod.to_f/2.0).to_i %>
               <% #for child in children[split1..split2-1]
-							for child in children[1..1]
-							%>
+              for child in children[1..1]
+              %>
 
                 <li class="business_top_title"><%= link_to child.navigation_title, url_for(child.path), :class => "business_arrow" %></li>
 
@@ -65,8 +65,8 @@
 
             <div style="margin-right: 0px; padding-right: 0px; border-right: 0px;">
               <% #for child in children[split2..100]
-							for child in children[2..100]
-							%>
+              for child in children[2..100]
+              %>
                 <li class="business_top_title"><%= link_to child.navigation_title, url_for(child.path), :class => "business_arrow" %></li>
 
                 <% for grandchild in PageNode.children(child.id).active.navigation %>

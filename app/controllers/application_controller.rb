@@ -22,9 +22,9 @@ class ApplicationController < ActionController::Base
     current_administrator
   end
 
-	helper_method :current_administrator
+  helper_method :current_administrator
 
-	private
+  private
 
   def current_administrator_session
     return @current_administrator_session if defined?(@current_administrator_session)
@@ -40,16 +40,16 @@ class ApplicationController < ActionController::Base
 
   #def log_error(exception)
   #  super(exception)
-	#
+  #
   #  begin
-  #  	if ENV['RAILS_ENV']=='production'
-	#      AdminMailer.deliver_exception_snapshot(
-	#        exception,
-	#        clean_backtrace(exception),
-	#        session.instance_variable_get("@data"),
-	#        params,
-	#        request.env)
-	#    end
+  #    if ENV['RAILS_ENV']=='production'
+  #      AdminMailer.deliver_exception_snapshot(
+  #        exception,
+  #        clean_backtrace(exception),
+  #        session.instance_variable_get("@data"),
+  #        params,
+  #        request.env)
+  #    end
   #  rescue => e
   #    logger.error(e)
   #  end

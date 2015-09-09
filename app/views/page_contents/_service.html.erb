@@ -10,15 +10,15 @@
 <% hide_contact %>
 
 <h1>
-	<% if params[:dki] %>
-		<%= title(params[:dki].gsub("-", " ")) %>
-	<% else %>
+  <% if params[:dki] %>
+    <%= title(params[:dki].gsub("-", " ")) %>
+  <% else %>
       <% if @page_node.active_content.page_main_title.blank? %>
-		<%= title(@page_node.title) %>
+    <%= title(@page_node.title) %>
       <% else %>
         <%= @page_node.active_content.page_main_title %>
       <% end %>
-	<% end %>
+  <% end %>
 </h1>
 
 <%= @page_node.active_content.main_content %>
@@ -72,14 +72,14 @@
 <% if @case_studies && @case_studies.length > 0 %>
   <hr />
   <div class="testimonials_case_studies">
-	  <div class="more" style="float: right;"><%= link_to "Read All", case_studies_path, {:class=>"small"} %></div>
-	  <h3><%= link_to "Case Studies", case_studies_path %></h3>
-	  <% for case_study in @case_studies %>
+    <div class="more" style="float: right;"><%= link_to "Read All", case_studies_path, {:class=>"small"} %></div>
+    <h3><%= link_to "Case Studies", case_studies_path %></h3>
+    <% for case_study in @case_studies %>
       <p>
-  	    <%= link_to case_study.name, case_study %><br />
+        <%= link_to case_study.name, case_study %><br />
         <%= case_study.summary %>
-  	  </p>
-  	<% end %>
+      </p>
+    <% end %>
   </div>
 <% end %>
 
@@ -216,7 +216,7 @@
 
   <% if @page_node.active_content.video && @page_node.active_content.video.valid? %>
 
-  		<h3><%= link_to "Videos", videos_path %></h3>
+      <h3><%= link_to "Videos", videos_path %></h3>
       <%= link_to image_tag(@page_node.active_content.video.thumbnail_url, :width => 208), @page_node.active_content.video %>
       <p><%= link_to @page_node.active_content.video.name, @page_node.active_content.video %></p>
      <hr />
@@ -267,7 +267,7 @@
   <h3>Meet the Team</h3>
   <div class="team_summary">
   <% for team_member in @team_cats %>
-  	<p>
+    <p>
       <%= link_to team_member.name, team_member %><br />
       <%= team_member.role %>
     </p>
@@ -285,50 +285,50 @@
   <% if @page_node.active_content.highlight_content? || @page_node.active_content.highlight_image? %>
 
       <div class="highlight_area">
-			<% if @page_node.active_content.highlight_image? %>
-				<% if @page_node.active_content.highlight_link? %>
-					<%= link_to image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208"), @page_node.active_content.highlight_link %>
-				<% elsif @page_node.active_content.highlight_external_link? %>
-					<%= link_to image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208"), @page_node.active_content.highlight_external_link, :popup => true %>
-				<% else %>
-					<%= image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208") %>
-				 <% end %>
-			<% end %>
-			<div id="highlight_box" class="<%= @page_node.active_content.highlight_style %>">
-				<%= @page_node.active_content.highlight_content %>
-				<% if @page_node.active_content.highlight_link? %>
-					<p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_link, {:class=>"small"} %></p>
-				<% elsif @page_node.active_content.highlight_external_link? %>
-					<p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_external_link, :popup => true, :class=>"small" %></p>
-				<% end %>
-			</div>
-		</div>
-		<hr />
+      <% if @page_node.active_content.highlight_image? %>
+        <% if @page_node.active_content.highlight_link? %>
+          <%= link_to image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208"), @page_node.active_content.highlight_link %>
+        <% elsif @page_node.active_content.highlight_external_link? %>
+          <%= link_to image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208"), @page_node.active_content.highlight_external_link, :popup => true %>
+        <% else %>
+          <%= image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208") %>
+         <% end %>
+      <% end %>
+      <div id="highlight_box" class="<%= @page_node.active_content.highlight_style %>">
+        <%= @page_node.active_content.highlight_content %>
+        <% if @page_node.active_content.highlight_link? %>
+          <p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_link, {:class=>"small"} %></p>
+        <% elsif @page_node.active_content.highlight_external_link? %>
+          <p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_external_link, :popup => true, :class=>"small" %></p>
+        <% end %>
+      </div>
+    </div>
+    <hr />
 
   <% end %>
 
   <!-- HIGHLIGHT #2 -->
   <% if @page_node.active_content.highlight_2_content? || @page_node.active_content.highlight_2_image? %>
-		<div class="highlight_area">
-			<% if @page_node.active_content.highlight_2_image? %>
-				<% if @page_node.active_content.highlight_2_link? %>
-					<%= link_to image_tag(@page_node.active_content.highlight_2_image.url(:main), :alt => @page_node.active_content.highlight_2_image_alt, :width => "208"), @page_node.active_content.highlight_2_link %>
-				<% elsif @page_node.active_content.highlight_2_ext_link? %>
-					<%= link_to image_tag(@page_node.active_content.highlight_2_image.url(:main), :alt => @page_node.active_content.highlight_2_image_alt, :width => "208"), @page_node.active_content.highlight_2_ext_link, :popup => true %>
-				<% else %>
-					<%= image_tag(@page_node.active_content.highlight_2_image.url(:main), :alt => @page_node.active_content.highlight_2_image_alt, :width => "208") %>
-				 <% end %>
-			<% end %>
-			<div id="highlight_box" class="<%= @page_node.active_content.highlight_2_style %>">
-				<%= @page_node.active_content.highlight_2_content %>
-				<% if @page_node.active_content.highlight_2_link? %>
-					<p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_2_link, {:class=>"small"} %></p>
-				<% elsif @page_node.active_content.highlight_2_ext_link? %>
-					<p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_2_ext_link, :popup => true, :class=>"small" %></p>
-				<% end %>
-			</div>
-		</div>
-		<hr />
+    <div class="highlight_area">
+      <% if @page_node.active_content.highlight_2_image? %>
+        <% if @page_node.active_content.highlight_2_link? %>
+          <%= link_to image_tag(@page_node.active_content.highlight_2_image.url(:main), :alt => @page_node.active_content.highlight_2_image_alt, :width => "208"), @page_node.active_content.highlight_2_link %>
+        <% elsif @page_node.active_content.highlight_2_ext_link? %>
+          <%= link_to image_tag(@page_node.active_content.highlight_2_image.url(:main), :alt => @page_node.active_content.highlight_2_image_alt, :width => "208"), @page_node.active_content.highlight_2_ext_link, :popup => true %>
+        <% else %>
+          <%= image_tag(@page_node.active_content.highlight_2_image.url(:main), :alt => @page_node.active_content.highlight_2_image_alt, :width => "208") %>
+         <% end %>
+      <% end %>
+      <div id="highlight_box" class="<%= @page_node.active_content.highlight_2_style %>">
+        <%= @page_node.active_content.highlight_2_content %>
+        <% if @page_node.active_content.highlight_2_link? %>
+          <p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_2_link, {:class=>"small"} %></p>
+        <% elsif @page_node.active_content.highlight_2_ext_link? %>
+          <p class="more" align="right"><%= link_to "View More", @page_node.active_content.highlight_2_ext_link, :popup => true, :class=>"small" %></p>
+        <% end %>
+      </div>
+    </div>
+    <hr />
   <% end %>
 
   <% if @articles && @articles.length > 0 %>

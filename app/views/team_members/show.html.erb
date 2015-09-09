@@ -1,33 +1,33 @@
 <script type="text/javascript">
-	function toggleSpecialism(){
-		$("specialism-content").toggle();
-		var text = $("specialism-toggle").innerHTML;
-		if (text == "Read More"){
-			$("specialism-toggle").update("Close")
-		}
-		else{
-			$("specialism-toggle").update("Read More")
-		}
-	}
-	function toggleCaseSuccesses(){
-		$("case-successes-content").toggle();
-		var text = $("case-successes-toggle").innerHTML;
-		if (text == "Read More"){
-			$("case-successes-toggle").update("Close")
-		}
-		else{
-			$("case-successes-toggle").update("Read More")
-		}
-	}
+  function toggleSpecialism(){
+    $("specialism-content").toggle();
+    var text = $("specialism-toggle").innerHTML;
+    if (text == "Read More"){
+      $("specialism-toggle").update("Close")
+    }
+    else{
+      $("specialism-toggle").update("Read More")
+    }
+  }
+  function toggleCaseSuccesses(){
+    $("case-successes-content").toggle();
+    var text = $("case-successes-toggle").innerHTML;
+    if (text == "Read More"){
+      $("case-successes-toggle").update("Close")
+    }
+    else{
+      $("case-successes-toggle").update("Read More")
+    }
+  }
   function toggleTestimonials() {
     $("testimonials").toggle();
-		var text = $("testimonials-toggle").innerHTML;
-		if (text == "Read More"){
-			$("testimonials-toggle").update("Close")
-		}
-		else{
-			$("testimonials-toggle").update("Read More")
-		}
+    var text = $("testimonials-toggle").innerHTML;
+    if (text == "Read More"){
+      $("testimonials-toggle").update("Close")
+    }
+    else{
+      $("testimonials-toggle").update("Read More")
+    }
   }
 </script>
 
@@ -44,10 +44,10 @@
   <h2>Professional Profile</h2>
 
   <!-- professional -->
-  
+
   <!-- left -->
   <div class="row">
-  
+
     <div class="team_show_left eight columns">
       <% if @team_member.image? %>
         <% if @team_member.image_alt.blank? %>
@@ -57,7 +57,7 @@
         <% end %>
       <% end %>
       <h3 class="team_show_name">
-				<%= title(@team_member.name) %>
+        <%= title(@team_member.name) %>
         <span><%= h(@team_member.role) %></span>
       </h3>
       <div class="team_contact_info">
@@ -78,9 +78,9 @@
         <% end %>
       </div>
     </div>
-    
-  
-	<!-- /left -->
+
+
+  <!-- /left -->
 
   <!-- right -->
     <% if @team_member.q1? || @team_member.q2? %>
@@ -95,14 +95,14 @@
         <% end %>
       </div>
     <% end %>
-	<!-- /right -->
-  
-  
+  <!-- /right -->
+
+
 
   <!-- beneath -->
-		<div class="personal_profile twelve columns">
-      
-		  <% if @testimonial %>
+    <div class="personal_profile twelve columns">
+
+      <% if @testimonial %>
         <hr />
         <div class="testimonial">
           <span>"<%= @testimonial.quote %>"</span>
@@ -121,82 +121,82 @@
         <% end %>
       <% end %>
     </div>
-	<!-- /beneath -->
+  <!-- /beneath -->
 
   <!-- personal -->
     <% if @team_member.q3? || @team_member.q4? || @team_member.q5? || @team_member.accred_1_image? || @team_member.accred_2_image? || @team_member.accred_3_image? %>
-			<div class="personal_profile twelve columns">
-				<div>
-					<% if @team_member.q3? %>
-						<% if @team_member.specialism_content? %>
+      <div class="personal_profile twelve columns">
+        <div>
+          <% if @team_member.q3? %>
+            <% if @team_member.specialism_content? %>
               <hr />
-							<h3>What do you specialise in?</h3>
-							<p><%= @team_member.q3 %></p>
-							<%= link_to_function "Read More", "toggleSpecialism()", :id => "specialism-toggle" %>
-							<div id="specialism-content" style="display: none">
-								<br />
-								<%= @team_member.specialism_content %>								
-							</div>
-						<% else %>
+              <h3>What do you specialise in?</h3>
+              <p><%= @team_member.q3 %></p>
+              <%= link_to_function "Read More", "toggleSpecialism()", :id => "specialism-toggle" %>
+              <div id="specialism-content" style="display: none">
+                <br />
+                <%= @team_member.specialism_content %>
+              </div>
+            <% else %>
               <hr />
-							<h3>What do you specialise in?</h3>
-							<p><%= @team_member.q3 %></p>
-						<% end %>
-					<% end %>
-					<% if @team_member.q4? %>
-						<% if @team_member.case_successes_content? %>
+              <h3>What do you specialise in?</h3>
+              <p><%= @team_member.q3 %></p>
+            <% end %>
+          <% end %>
+          <% if @team_member.q4? %>
+            <% if @team_member.case_successes_content? %>
               <hr />
-							<h3>Recent case successes</h3>
-							<p><%= @team_member.q4 %></p>
-							<%= link_to_function "Read More", "toggleCaseSuccesses()", :id => "case-successes-toggle" %>
-							<div id="case-successes-content" style="display: none">
-								<br />
-								<%= @team_member.case_successes_content %>								
-							</div>
-						<% else %>
-							<h3>Recent case successes</h3>
-							<p><%= @team_member.q4 %></p>
-						<% end %>
-					<% end %>
-					<% if @team_member.q5? || @team_member.accred_1_image? || @team_member.accred_2_image? || @team_member.accred_3_image? %>
-						<h3>Accreditations &amp; memberships</h3>
-						<% if @team_member.q5? %>
-							<p><%= @team_member.q5 %></p>
-						<% end %>
-						<% if @team_member.accred_1_image? || @team_member.accred_2_image? || @team_member.accred_3_image? %>
-							<div class="team_member_logos">
-								<% if @team_member.accred_1_image? %>
-									<% if !@team_member.accred_1_link.blank? %>
-										<%= link_to(image_tag(@team_member.accred_1_image(:show_page), :alt => @team_member.accred_1_image_alt), @team_member.accred_1_link, {:popup => true}) %>
-									<% else %>
-										<%= image_tag(@team_member.accred_1_image(:show_page), :alt => @team_member.accred_1_image_alt) %>
-									<% end %>
-								<% end %>
-								<% if @team_member.accred_2_image? %>
-									<% if !@team_member.accred_2_link.blank? %>
-										<%= link_to(image_tag(@team_member.accred_2_image(:show_page), :alt => @team_member.accred_2_image_alt), @team_member.accred_2_link, {:popup => true}) %>
-									<% else %>
-										<%= image_tag(@team_member.accred_2_image(:show_page), :alt => @team_member.accred_2_image_alt) %>
-									<% end %>
-								<% end %>
-								<% if @team_member.accred_3_image? %>
-									<% if !@team_member.accred_3_link.blank? %>
-										<%= link_to(image_tag(@team_member.accred_3_image(:show_page), :alt => @team_member.accred_3_image_alt), @team_member.accred_3_link, {:popup => true}) %>
-									<% else %>
-										<%= image_tag(@team_member.accred_3_image(:show_page), :alt => @team_member.accred_3_image_alt) %>
-									<% end %>
-								<% end %>
-								<div class="clear"></div>
-							</div>
-						<% end %>
-					<% end %>
-				</div>
-			</div>
-		<% end %>
-		<% if @team_member.q6? || @team_member.q7? || @team_member.q8? || @team_member.q9? || @team_member.q10? %>
-			<div class="personal_profile twelve columns">
+              <h3>Recent case successes</h3>
+              <p><%= @team_member.q4 %></p>
+              <%= link_to_function "Read More", "toggleCaseSuccesses()", :id => "case-successes-toggle" %>
+              <div id="case-successes-content" style="display: none">
+                <br />
+                <%= @team_member.case_successes_content %>
+              </div>
+            <% else %>
+              <h3>Recent case successes</h3>
+              <p><%= @team_member.q4 %></p>
+            <% end %>
+          <% end %>
+          <% if @team_member.q5? || @team_member.accred_1_image? || @team_member.accred_2_image? || @team_member.accred_3_image? %>
+            <h3>Accreditations &amp; memberships</h3>
+            <% if @team_member.q5? %>
+              <p><%= @team_member.q5 %></p>
+            <% end %>
+            <% if @team_member.accred_1_image? || @team_member.accred_2_image? || @team_member.accred_3_image? %>
+              <div class="team_member_logos">
+                <% if @team_member.accred_1_image? %>
+                  <% if !@team_member.accred_1_link.blank? %>
+                    <%= link_to(image_tag(@team_member.accred_1_image(:show_page), :alt => @team_member.accred_1_image_alt), @team_member.accred_1_link, {:popup => true}) %>
+                  <% else %>
+                    <%= image_tag(@team_member.accred_1_image(:show_page), :alt => @team_member.accred_1_image_alt) %>
+                  <% end %>
+                <% end %>
+                <% if @team_member.accred_2_image? %>
+                  <% if !@team_member.accred_2_link.blank? %>
+                    <%= link_to(image_tag(@team_member.accred_2_image(:show_page), :alt => @team_member.accred_2_image_alt), @team_member.accred_2_link, {:popup => true}) %>
+                  <% else %>
+                    <%= image_tag(@team_member.accred_2_image(:show_page), :alt => @team_member.accred_2_image_alt) %>
+                  <% end %>
+                <% end %>
+                <% if @team_member.accred_3_image? %>
+                  <% if !@team_member.accred_3_link.blank? %>
+                    <%= link_to(image_tag(@team_member.accred_3_image(:show_page), :alt => @team_member.accred_3_image_alt), @team_member.accred_3_link, {:popup => true}) %>
+                  <% else %>
+                    <%= image_tag(@team_member.accred_3_image(:show_page), :alt => @team_member.accred_3_image_alt) %>
+                  <% end %>
+                <% end %>
+                <div class="clear"></div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% if @team_member.q6? || @team_member.q7? || @team_member.q8? || @team_member.q9? || @team_member.q10? %>
+      <div class="personal_profile twelve columns">
         <hr />
-				<h2>Personal Profile</h2>
+        <h2>Personal Profile</h2>
         <% if @team_member.casual_image? %>
           <%= image_tag @team_member.casual_image.url(:show_page), :class => "profile_pic" %>
         <% end %>
@@ -226,7 +226,7 @@
       </div>
     <% end %>
   <!-- /personal -->
-  
+
   </div>
 
   <!-- related -->
@@ -237,14 +237,14 @@
     <p class="more hide-for-small" align="right">
       <%= link_to "View all team members", team_members_path, :class => "large" %>
     </p>
-		<% if !@related_team_members.empty? %>
-			<div class="team_list clear">
-				<% for team_member in @related_team_members %>
-					<%= render "team_member", :team_member => team_member %>
-				<% end %>
-			</div>
+    <% if !@related_team_members.empty? %>
+      <div class="team_list clear">
+        <% for team_member in @related_team_members %>
+          <%= render "team_member", :team_member => team_member %>
+        <% end %>
+      </div>
       <hr />
-		<% end %>
+    <% end %>
   <!-- /related -->
 
 </div>

@@ -1,6 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  
+
   def scan_for_links(text)
     result = ""
     for word in text.split(" ")
@@ -16,15 +16,15 @@ module ApplicationHelper
     end
     result
   end
-  
+
   def ntp(input)
     number_to_currency input, :unit => "&pound;"
   end
-  
+
   def is_home
     @is_home = true
   end
-  
+
   def is_home?
     @is_home
   end
@@ -32,40 +32,40 @@ module ApplicationHelper
   def hide_search
     @hide_search = true
   end
-  
+
   def hide_search?
     @hide_search
   end
-  
+
   def hide_contact
     @hide_contact = true
   end
-  
+
   def hide_contact?
     @hide_contact
   end
-  
+
   def show_rss
     @show_rss = true
   end
-  
+
   def show_rss?
     @show_rss
   end
-	
-	def determine_page_node
-		if @page_node
-			@current_page_node = @page_node
-		elsif PageNode.controller_action(params[:controller], params[:action]).first
-			@current_page_node = PageNode.controller_action(params[:controller], params[:action]).sort_by{|x| x.position}.first
-		elsif PageNode.controller_action(params[:controller], "").first
-			@current_page_node = PageNode.controller_action(params[:controller], "").sort_by{|x| x.position}.first
-		else
-			nil
-		end
-	end
-	
-	def check_box_tree_tag_2(nodes, name, name_method, child_method, selected=nil, options={})
+
+  def determine_page_node
+    if @page_node
+      @current_page_node = @page_node
+    elsif PageNode.controller_action(params[:controller], params[:action]).first
+      @current_page_node = PageNode.controller_action(params[:controller], params[:action]).sort_by{|x| x.position}.first
+    elsif PageNode.controller_action(params[:controller], "").first
+      @current_page_node = PageNode.controller_action(params[:controller], "").sort_by{|x| x.position}.first
+    else
+      nil
+    end
+  end
+
+  def check_box_tree_tag_2(nodes, name, name_method, child_method, selected=nil, options={})
     html = "<ul style='list-style-type:none; margin-left:10px; padding-left:0px;' class='check_box_tree'>"
     for node in nodes
       html << "<li>"
@@ -75,7 +75,7 @@ module ApplicationHelper
         html << " "
       end
       html << label_tag("team_member_page_node_ids_#{node.id}", name_method.call(node))
-     	html << check_box_tag(name, node.id, selected.include?(node.id), :class => "checkbox", :id => "team_member_page_node_ids_#{node.id}")
+       html << check_box_tag(name, node.id, selected.include?(node.id), :class => "checkbox", :id => "team_member_page_node_ids_#{node.id}")
       if children.length > 0
       html << "<ul style='list-style-type:none; margin-left:10px; padding-left:0px; display: none;' id='check_box_tree_#{node.id}'>"
         html << check_box_tree_tag_2(children, name, name_method, child_method, selected, options)
@@ -87,13 +87,13 @@ module ApplicationHelper
 
     return html
   end
-  
+
   def options_from_tree_for_select(nodes, value_method, name_method, child_method, init, selected=nil, options={}, current_node=nil, level=0)
     html = ""
     if init
       unless options[:include_blank] == false
         if options[:include_blank] == true
-          html << "<option></option>"    	
+          html << "<option></option>"
         else
           html << "<option value="">#{options[:include_blank].to_s}</option>"
         end
@@ -101,10 +101,10 @@ module ApplicationHelper
     end
     for node in nodes.reject{|x| x.recycled? }
       unless node == current_node || node.ancestors.include?(current_node)
-     		html << "\t<option value=\"#{value_method.call(node)}\""
+         html << "\t<option value=\"#{value_method.call(node)}\""
         html << ' selected="selected"' if selected && selected == node.id
         html << ">"
-        level.times do 
+        level.times do
           html << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         end
         html << name_method.call(node)
@@ -114,18 +114,18 @@ module ApplicationHelper
     end
     return html
   end
-  
+
   def toggle_fieldset(legend, name=nil, open=false)
     name ||= legend.downcase.gsub(/\W/, '_')
     ret = ""
     ret += "<fieldset style=\"height:0px; #{open ? "display:none;" : ""}\" id=\"#{name}_1\">"
-	  ret += "<legend style=\"cursor:pointer;cursor:hand\" onclick=\"$('#{name}_1').toggle(); $('#{name}_2').toggle();\" class=\"open\">#{legend}</legend>"
+    ret += "<legend style=\"cursor:pointer;cursor:hand\" onclick=\"$('#{name}_1').toggle(); $('#{name}_2').toggle();\" class=\"open\">#{legend}</legend>"
     ret += "</fieldset>"
     ret += "<fieldset id=\"#{name}_2\" style=\"#{open ? "" : "display:none;"}\">"
-	  ret += "<legend style=\"cursor:pointer;cursor:hand\" onclick=\"$('#{name}_1').toggle(); $('#{name}_2').toggle();\" class=\"close\">#{legend}</legend>"
-	  ret
+    ret += "<legend style=\"cursor:pointer;cursor:hand\" onclick=\"$('#{name}_1').toggle(); $('#{name}_2').toggle();\" class=\"close\">#{legend}</legend>"
+    ret
   end
-  
+
   def toggle_fieldset_controls()
     ret = ""
     ret += "<p class='toggle_fieldset_control'>"
@@ -135,11 +135,11 @@ module ApplicationHelper
     ret += "</p>"
     ret
   end
-  
+
   def number_to_pounds(amount, options={})
-    number_to_currency(amount, options.merge!(:unit => "&pound;"))  
+    number_to_currency(amount, options.merge!(:unit => "&pound;"))
   end
-  
+
   # pass :behaviour => "hide" or behaviour => "highlight" to change page hidden / not found behaviour
   def link_to_page(link_text, page_name, options={})
     page_node = PageNode.find_by_name(page_name)
@@ -161,7 +161,7 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def shorten(text, length=150)
     if text.length > length
       text[0..length].split[0..-2].join(' ') + '...'
@@ -169,7 +169,7 @@ module ApplicationHelper
       text
     end
   end
-  
+
   require 'rss'
   require 'open-uri'
   def blog_feed
@@ -196,5 +196,5 @@ module ApplicationHelper
       return raw html
     end
   end
-  
+
 end

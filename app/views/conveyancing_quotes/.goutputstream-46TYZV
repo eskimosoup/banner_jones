@@ -2,18 +2,18 @@
 
 <% unless @hide %>
   <p>
-    Feel free to bookmark this page and revisit it when you like, or you can 
+    Feel free to bookmark this page and revisit it when you like, or you can
     <br /><%= link_to "download a PDF version", pdf_for_conveyancing_quote_path(@cq, :p => @cq.passcode, :format => "pdf"), {:class=>"pdf_doc", :target => "_blank"} %> of the quote.
   </p>
   <hr />
 <% end %>
 
 <% if params[:a] -%>
-  
+
 <% end -%>
 
 <div class="conveyancing_quote">
-	<%= render @conveyancing_quote.show_partial %>
+  <%= render @conveyancing_quote.show_partial %>
 </div>
 
 <% unless @hide %>

@@ -42,19 +42,19 @@ function startPage()
 
   <% for highlight in HomeHighlight.active.position %>
     <div class="top_curve_box_<%= highlight.color %>" id="highlight_<%= highlight.id %>" style="display:<%= highlight == HomeHighlight.active.position.first ? "" : "none" %>;">
-	    <div class="text">
+      <div class="text">
         <h1><%= highlight.headline %></h1>
         <p><%= highlight.summary %></p>
         <p class="more" align="right"><%= link_to "View more details", highlight.link, {:class=>"medium"} %></p>
       </div>
 
       <div class="picture">
-      	<span></span>
-      	<% if highlight.image? %>
-    		  <%= image_tag highlight.image.url(:banner) %>
-    		<% else %>
-      		<%= image_tag "red_curve_pic_1.jpg" %>
-    		<% end %>
+        <span></span>
+        <% if highlight.image? %>
+          <%= image_tag highlight.image.url(:banner) %>
+        <% else %>
+          <%= image_tag "red_curve_pic_1.jpg" %>
+        <% end %>
       </div>
     </div>
   <% end %>

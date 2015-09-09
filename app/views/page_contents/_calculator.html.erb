@@ -1,9 +1,9 @@
 <% content_for :javascript do %>
-	<%= stylesheet_link_tag "tooltip.css" %>
-	<%= javascript_include_tag "jquery" %>
-	<%= javascript_include_tag "jquery-ui" %>
-	<%= javascript_include_tag "tooltip" %>
-	<%= javascript_include_tag "p7exp" %>
+  <%= stylesheet_link_tag "tooltip.css" %>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "jquery-ui" %>
+  <%= javascript_include_tag "tooltip" %>
+  <%= javascript_include_tag "p7exp" %>
 
 <% end -%>
 
@@ -17,9 +17,9 @@
         <% elsif @page_node.active_content.highlight_external_link? %>
           <%= link_to image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208"), @page_node.active_content.highlight_external_link, :popup => true %>
         <% else %>
-      	  <%= image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208") %>
-      	 <% end %>
-	    <% end %>
+          <%= image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208") %>
+         <% end %>
+      <% end %>
 
       <div id="highlight_box" class="<%= @page_node.active_content.highlight_style %>">
         <%= @page_node.active_content.highlight_content %>
@@ -38,11 +38,11 @@
 <% metadata(@page_node.active_content.meta_description, @page_node.active_content.meta_tags) %>
 
 <h1>
-	<% if params[:dki] %>
-		<%= title(params[:dki].gsub("-", " ")) %>
-	<% else %>
-		<%= title(@page_node.title) %>
-	<% end %>
+  <% if params[:dki] %>
+    <%= title(params[:dki].gsub("-", " ")) %>
+  <% else %>
+    <%= title(@page_node.title) %>
+  <% end %>
 </h1>
 
 <%= @page_node.active_content.main_content %>

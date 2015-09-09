@@ -9,8 +9,6 @@
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-ENV['RECAPTCHA_PUBLIC_KEY'] = '6LduqsESAAAAAKW9X5-8jU0uXuwyM0u0ulZ84b8C'
-ENV['RECAPTCHA_PRIVATE_KEY'] = '6LduqsESAAAAAEEMgOIYtuFYjqUujBhzOmliSQPE'
 
 Rails::Initializer.run do |config|
 

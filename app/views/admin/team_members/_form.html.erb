@@ -52,8 +52,8 @@
       <%= f.label :q3, "What do you specialise in?" %><br />
       <%= f.text_area :q3 %>
     </p>
-		
-		<p>
+
+    <p>
       <%= f.label :specialism_content %><br />
       <%= f.advanced_text_area :specialism_content %>
     </p>
@@ -62,8 +62,8 @@
       <%= f.label :q4, "Recent case successes" %><br />
       <%= f.text_area :q4 %>
     </p>
-		
-		<p>
+
+    <p>
       <%= f.label :case_successes_content %><br />
       <%= f.advanced_text_area :case_successes_content %>
     </p>
@@ -71,34 +71,34 @@
     <p>
       <%= f.label :q5, "Accreditations & memberships" %><br />
       <%= f.text_area :q5 %>
-		</p>
+    </p>
 
   </fieldset>
 
-	<fieldset>
-		<legend>Accreditation Images</legend>
-		<p>
-			<%= image_field_tag f, :team_member, :accred_1_image %>
-		</p>
-		<p>
-			<%= f.helpful_label :accred_1_link, "Accreditation 1 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
-			<%= f.text_field :accred_1_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
-		</p>
-		<p>
-			<%= image_field_tag f, :team_member, :accred_2_image %>
-		</p>
-		<p>
-			<%= f.helpful_label :accred_2_link, "Accreditation 2 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
-			<%= f.text_field :accred_2_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
-		</p>
-		<p>
-			<%= image_field_tag f, :team_member, :accred_3_image %>
-		</p>
-		<p>
-			<%= f.helpful_label :accred_3_link, "Accreditation 3 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
-			<%= f.text_field :accred_3_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
-		</p>
-	</fieldset>
+  <fieldset>
+    <legend>Accreditation Images</legend>
+    <p>
+      <%= image_field_tag f, :team_member, :accred_1_image %>
+    </p>
+    <p>
+      <%= f.helpful_label :accred_1_link, "Accreditation 1 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
+      <%= f.text_field :accred_1_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
+    </p>
+    <p>
+      <%= image_field_tag f, :team_member, :accred_2_image %>
+    </p>
+    <p>
+      <%= f.helpful_label :accred_2_link, "Accreditation 2 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
+      <%= f.text_field :accred_2_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
+    </p>
+    <p>
+      <%= image_field_tag f, :team_member, :accred_3_image %>
+    </p>
+    <p>
+      <%= f.helpful_label :accred_3_link, "Accreditation 3 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
+      <%= f.text_field :accred_3_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
+    </p>
+  </fieldset>
 
   <fieldset>
     <legend>Personal Questions</legend>
@@ -127,7 +127,7 @@
       <%= f.text_area :q10 %>
     </p>
   </fieldset>
-  
+
   <fieldset>
     <legend>Champion Bio</legend>
     <p>
@@ -135,12 +135,12 @@
       <%= f.text_area :champion_bio %>
     </p>
   </fieldset>
-    
+
     <legend>Google+ link</legend>
     <%= f.label "Google+ Profile ID" %><br />
     <%= f.text_field :google_link %>
   </fieldset>
-  
+
   <fieldset>
     <legend>Twitter Username</legend>
     <%= f.label :twitter_link, "Twitter Username" %><br />
@@ -155,7 +155,7 @@
                                                                       :name_method => "navigation_title"} %>
     </p>
   </fieldset>
-  
+
   <fieldset>
     <legend>Family or Business?</legend>
     <%= f.select:team_catagory, TeamMember.team_catagories %>
@@ -175,6 +175,6 @@
                                                                                  :name_method => "long_name"} %>
     </p>
   </fieldset>
-  
+
   <p><%= f.submit "Submit" %></p>
 <% end %>

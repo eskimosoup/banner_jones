@@ -6,20 +6,20 @@
   <body>
     <h1>
     <% if (@title && !@title.blank?) && (@name && !@name.blank?) %>
-      <%= @title %> <%= @name %> 
+      <%= @title %> <%= @name %>
     <% elsif (!@title || @title.blank?) && (@name && !@name.blank?) %>
-      <%= @name %> 
+      <%= @name %>
     <% elsif (!@name || @name.blank?) %>
-      Someone 
+      Someone
     <% end %>
     has filled in the contact us form
     </h1>
     <h2>Contact details:</h2>
     <% if @tel && !@tel.blank? %>
-    	<strong>Telephone: </strong> <%= @tel %><br />
+      <strong>Telephone: </strong> <%= @tel %><br />
     <% end %>
     <% if @email && !@email.blank? %>
-    	<strong>Email: </strong> <%= auto_link @email %><br />
+      <strong>Email: </strong> <%= auto_link @email %><br />
     <% end %>
     <% if @pcm && !@pcm.blank? %>
       <p>Their preferred contact method is <strong><%= @pcm.downcase %></strong>.</p>

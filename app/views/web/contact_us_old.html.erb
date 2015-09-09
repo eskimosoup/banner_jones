@@ -66,7 +66,7 @@
       <%= check_box_tag :disclaimer, '1', params[:disclaimer], :class => "checkbox check_box" %>
       <%= label_tag "Please confirm that you have read our #{link_to "disclaimer", :controller => "web", :action => "disclaimer"}" %>
     </p>
-    
+
     <p>
       <%= submit_tag "Submit" %>
     </p>
@@ -90,8 +90,8 @@
         <% elsif @page_node.active_content.highlight_external_link? %>
           <%= link_to image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208"), @page_node.active_content.highlight_external_link, :popup => true %>
         <% else %>
-      	  <%= image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208") %>
-      	 <% end %>
+          <%= image_tag(@page_node.active_content.highlight_image.url(:main), :alt => @page_node.active_content.highlight_image_alt, :width => "208") %>
+         <% end %>
       <% end %>
 
       <div id="highlight_box" class="<%= @page_node.active_content.highlight_style %>">

@@ -9,10 +9,10 @@
     </h1>
     <h2>Contact details:</h2>
     <% if @phone && !@phone.blank? %>
-    	<strong>Telephone: </strong> <%= @phone %><br />
+      <strong>Telephone: </strong> <%= @phone %><br />
     <% end %>
     <% if @email && !@email.blank? %>
-    	<strong>Email: </strong> <%= auto_link @email %><br />
+      <strong>Email: </strong> <%= auto_link @email %><br />
     <% end %>
     <h2>Name:</h2>
     <%= @name %>

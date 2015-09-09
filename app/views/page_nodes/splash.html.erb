@@ -11,7 +11,7 @@
 
 <div class="top_curve_container">
 
-	<% if @page_node.ancestors.include?(PageNode.family_node.first) %>
+  <% if @page_node.ancestors.include?(PageNode.family_node.first) %>
   <div class="top_curve_box_yellow">
   <% else %>
   <div class="top_curve_box_red">
@@ -25,13 +25,13 @@
     </div>
     <div class="picture">
       <span></span>
-      <%= image_tag @page_content.banner_image.url(:main), :border => "0", :hspace => "0", :vspace => "0", :alt => " " %>	
+      <%= image_tag @page_content.banner_image.url(:main), :border => "0", :hspace => "0", :vspace => "0", :alt => " " %>
     </div>
   </div>
-  
-</div>  
+
+</div>
   <%= @page_content.splash_content %>
-  
+
   <br />
   <br />
   <div class="large_button_links">

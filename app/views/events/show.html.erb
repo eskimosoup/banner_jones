@@ -21,9 +21,9 @@
   <h1>Booking Form</h1>
 
   <% form_tag "#booking_form"  do %>
-	  <%- flash.each do |name, msg| -%>
-			<%= content_tag :div, msg, :id => "flash_#{name}" %>
-		<%- end -%>
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <%- end -%>
     <p>
       <%= label_tag :name %><br />
       <%= text_field_tag :name, params[:name] %>
@@ -52,7 +52,7 @@
       <%= label_tag :additional_names, 'Names of any additional delegates' %><br />
       <%= text_area_tag :additional_names, params[:additional_names] %>
     </p>
-      
+
     <!--
     <p>
       <%#= label_tag "Verify Identity" %><br />

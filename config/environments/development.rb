@@ -8,7 +8,7 @@ config.cache_classes = false
 # Log error messages when you accidentally call methods on nil.
 config.whiny_nils = true
 
-config.action_mailer.default_url_options = { :host => "192.168.0.122:6242" } 
+config.action_mailer.default_url_options = { :host => "localhost:3000" }
 ActionController::Base.asset_host = config.action_mailer.default_url_options[:host]
 
 # Show full error reports and disable caching

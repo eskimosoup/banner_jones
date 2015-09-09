@@ -19,9 +19,9 @@
   <% end %>
 
   <meta name="p:domain_verify" content="2defcdf5f41d7db555d288b867ead22c"/>
-	<link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title><%= h("#{SiteSetting.find_by_name("Site Name").try(:value)} - #{yield(:title) || "Untitled"}") %></title>
+  <title><%= h("#{SiteSetting.find_by_name("Site Name").try(:value)} - #{yield(:title) || "Untitled"}") %></title>
   <link rel="stylesheet" href="/stylesheets/foundation.css" />
   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -29,43 +29,43 @@
   <%= javascript_include_tag "foundation/app.js" %>
 
 
-	<%= stylesheet_link_tag "webstyle.css" %>
-	<%= stylesheet_link_tag "tnymc.css" %>
+  <%= stylesheet_link_tag "webstyle.css" %>
+  <%= stylesheet_link_tag "tnymc.css" %>
   <%= stylesheet_link_tag "ie8_grid.css" %>
-	<% if @current_page_node && @current_page_node.style %>
-		<%= stylesheet_link_tag @current_page_node.style %>
-	<% end %>
-	<% if @current_page_node && @current_page_node.ancestors.include?(PageNode.business_node.first) || @current_page_node == PageNode.business_node.first %>
-  	<%= stylesheet_link_tag "business.css" %>
-	<% elsif @current_page_node && @current_page_node.ancestors.include?(PageNode.family_node.first) || @current_page_node == PageNode.family_node.first %>
-  	<%= stylesheet_link_tag "family.css" %>
+  <% if @current_page_node && @current_page_node.style %>
+    <%= stylesheet_link_tag @current_page_node.style %>
+  <% end %>
+  <% if @current_page_node && @current_page_node.ancestors.include?(PageNode.business_node.first) || @current_page_node == PageNode.business_node.first %>
+    <%= stylesheet_link_tag "business.css" %>
+  <% elsif @current_page_node && @current_page_node.ancestors.include?(PageNode.family_node.first) || @current_page_node == PageNode.family_node.first %>
+    <%= stylesheet_link_tag "family.css" %>
   <% else %>
     <%= stylesheet_link_tag "webstyle_default.css" %>
-	<% end %>
+  <% end %>
 
 
 
   <% if yield(:javascript) -%>
     <%= yield :javascript %>
   <% else -%>
-  	<%= javascript_include_tag "prototype" %>
-  	<%= javascript_include_tag "scriptaculous" %>
+    <%= javascript_include_tag "prototype" %>
+    <%= javascript_include_tag "scriptaculous" %>
     <%= javascript_include_tag "p7exp" %>
   <% end -%>
 
-	<% if @include_tinymce_script -%>
-	  <%= javascript_include_tag "tiny_mce/tiny_mce.js" %>
-	  <%= javascript_include_tag "tiny_mce_config" %>
-	<% end -%>
+  <% if @include_tinymce_script -%>
+    <%= javascript_include_tag "tiny_mce/tiny_mce.js" %>
+    <%= javascript_include_tag "tiny_mce_config" %>
+  <% end -%>
 
   <link rel="stylesheet" href="/stylesheets/media_queries.css" />
 
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 
 <!--[if IE 6]>
 <style type="text/css">
-	.picture span, .small, .medium, .large { behavior: url(../iepngfix.htc); }
+  .picture span, .small, .medium, .large { behavior: url(../iepngfix.htc); }
   .home_form {display: none;}
 </style>
 <![endif]-->
@@ -87,13 +87,13 @@
 <%= render :partial => "shared/admin_widget" %>
 
 
-	<p class="skip"><a href="#content" accesskey="s">Skip to the main content</a></p>
+  <p class="skip"><a href="#content" accesskey="s">Skip to the main content</a></p>
 
 <div class="row header-fix">
-	<% if @current_page_node && @current_page_node.alternate_header? %>
-		<div class="top-white six mobile-four columns">
-			<%= link_to image_tag("logo-white.png", :alt => SiteSetting.find_by_name("Site Name").try(:value), :title => SiteSetting.find_by_name("Site Name").try(:value), :border => "0", :hspace => "0", :vspace => "0", :class => "logo"), {:controller => 'web', :action => 'index'} %>
-			<div class="top_right_black six mobile-four columns">
+  <% if @current_page_node && @current_page_node.alternate_header? %>
+    <div class="top-white six mobile-four columns">
+      <%= link_to image_tag("logo-white.png", :alt => SiteSetting.find_by_name("Site Name").try(:value), :title => SiteSetting.find_by_name("Site Name").try(:value), :border => "0", :hspace => "0", :vspace => "0", :class => "logo"), {:controller => 'web', :action => 'index'} %>
+      <div class="top_right_black six mobile-four columns">
         <span class="tel">
           01246 560 570
         </span>
@@ -102,9 +102,9 @@
           <%= link_to("info@bannerjoneswm.co.uk", "mailto:info@bannerjoneswm.co.uk") %>
         </span>
 
-			</div>
-		</div>
-	<% else %>
+      </div>
+    </div>
+  <% else %>
 
     <div class="top six mobile-four columns hide-for-small">
       <div class="logo">
@@ -160,87 +160,87 @@
     </div>
   <% end %>
 
-	<% unless hide_search? %>
+  <% unless hide_search? %>
     <div class="breadcrumbs_search hide-for-small">
       <div class="breadcrumbs">
         <%= render :partial => "shared/breadcrumbs" %>
       </div>
       <%= render :partial => "shared/site_search_form" %>
-		</div>
-	<% end %>
+    </div>
+  <% end %>
 
-	<div id="content" class="row">
+  <div id="content" class="row">
 
-		<%- unless hide_flash? -%>
-		  <%- flash.each do |name, msg| -%>
-				<%= content_tag :div, msg, :id => "flash_#{name}" %>
-			<%- end -%>
-		<%- end -%>
+    <%- unless hide_flash? -%>
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
+    <%- end -%>
 
-		<% if hide_left? && hide_right? %>
+    <% if hide_left? && hide_right? %>
 
-			<%= @content_for_layout %>
+      <%= @content_for_layout %>
 
-		<% elsif hide_left? %>
+    <% elsif hide_left? %>
 
-			<div class="content_left">
-				<%= @content_for_layout %>
-			</div>
-
-			<div class="right">
-				<%= yield :right %>
-			</div>
-
-		<% elsif hide_right? %>
-
-			<div class="left three columns hide-for-small">
-			  <% if yield :left %>
-  			  <%= yield :left %>
-			  <% else %>
-					<%= render :partial => "shared/navigation" %>
-				<% end %>
-			</div>
-
-			<div class="content_right nine columns">
-				<%= @content_for_layout %>
-        <%= render :partial => "shared/contact_now_button" %>
-			</div>
-
-		<% else %>
-
-			<div class="left three columns hide-for-small">
-			  <% if yield :left %>
-  			  <%= yield :left %>
-			  <% else %>
-					<%= render :partial => "shared/navigation" %>
-				<% end %>
-			</div>
-
-			<div class="content_middle six columns">
-				<%= @content_for_layout %>
-				<% unless hide_contact? %>
-          <%= render :partial => "shared/contact_now_button" %>
-        <% end %>
-			</div>
-
-			<div class="right three columns">
-				<%= yield :right %>
+      <div class="content_left">
+        <%= @content_for_layout %>
       </div>
 
-		<% end %>
+      <div class="right">
+        <%= yield :right %>
+      </div>
+
+    <% elsif hide_right? %>
+
+      <div class="left three columns hide-for-small">
+        <% if yield :left %>
+          <%= yield :left %>
+        <% else %>
+          <%= render :partial => "shared/navigation" %>
+        <% end %>
+      </div>
+
+      <div class="content_right nine columns">
+        <%= @content_for_layout %>
+        <%= render :partial => "shared/contact_now_button" %>
+      </div>
+
+    <% else %>
+
+      <div class="left three columns hide-for-small">
+        <% if yield :left %>
+          <%= yield :left %>
+        <% else %>
+          <%= render :partial => "shared/navigation" %>
+        <% end %>
+      </div>
+
+      <div class="content_middle six columns">
+        <%= @content_for_layout %>
+        <% unless hide_contact? %>
+          <%= render :partial => "shared/contact_now_button" %>
+        <% end %>
+      </div>
+
+      <div class="right three columns">
+        <%= yield :right %>
+      </div>
+
+    <% end %>
 
 
     <div class="clear"></div>
-	</div>
+  </div>
 
 
 
 
-	<div class="footer_links row">
+  <div class="footer_links row">
     <div class="twelve columns">
 
-		<div style="margin-top: 20px;" class="footer-logo-img">
-			<a href="http://www.dotlegal.co.uk" target="_blank">
+    <div style="margin-top: 20px;" class="footer-logo-img">
+      <a href="http://www.dotlegal.co.uk" target="_blank">
         <%= image_tag "logo_dot_legal.gif", :alt => "dot legal discount scheme", :title => "dot legal discount scheme", :border => "0", :hspace => "0", :vspace => "0" %>
       </a>
     </div>
@@ -258,16 +258,16 @@
     </div>
 
     <div class="contact_info">
-    	<p>e: <a href="mailto:info@bannerjones.co.uk">info@bannerjones.co.uk</a><br />t: <span class="calltracks_bannerjonescouk-main">0330 017 6309</span></p>
+      <p>e: <a href="mailto:info@bannerjones.co.uk">info@bannerjones.co.uk</a><br />t: <span class="calltracks_bannerjonescouk-main">0330 017 6309</span></p>
     </div>
 
     <hr />
 
     <div class="row">
     <div class="col_1 three columns">
-    	<h3 style="margin-bottom: 8px; padding-bottom: 8px;"><%= link_to "Services for your business", url_for(PageNode.business_node.first.path) %></h3>
+      <h3 style="margin-bottom: 8px; padding-bottom: 8px;"><%= link_to "Services for your business", url_for(PageNode.business_node.first.path) %></h3>
 
-    	<% business_nodes = PageNode.business_nodes.active.position %>
+      <% business_nodes = PageNode.business_nodes.active.position %>
       <ul>
         <% for page in business_nodes %>
           <li><%= link_to page.navigation_title, url_for(page.path) %></li>
@@ -276,11 +276,11 @@
     </div>
 
     <div class="col_2 nine columns">
-    	<h3 style="margin-bottom: 8px; padding-bottom: 8px;"><%= link_to "Services for you &amp; your family", url_for(PageNode.family_node.first.path) %></h3>
+      <h3 style="margin-bottom: 8px; padding-bottom: 8px;"><%= link_to "Services for you &amp; your family", url_for(PageNode.family_node.first.path) %></h3>
 
-    	<% family_nodes = PageNode.family_nodes.active.position %>
+      <% family_nodes = PageNode.family_nodes.active.position %>
 
-    	<% begin %>
+      <% begin %>
 
       <ul>
         <% for page in family_nodes[0..3] %>
@@ -295,13 +295,13 @@
       </ul>
 
       <ul>
-      	<% for page in family_nodes[8..10] %>
+        <% for page in family_nodes[8..10] %>
           <li><%= link_to page.navigation_title, url_for(page.path) %></li>
         <% end %>
       </ul>
 
       <ul>
-      	<% for page in family_nodes[11..family_nodes.length] %>
+        <% for page in family_nodes[11..family_nodes.length] %>
           <li><%= link_to page.navigation_title, url_for(page.path) %></li>
         <% end %>
       </ul>
@@ -320,45 +320,45 @@
         <h3>Our Social Media</h3>
         <%= link_to image_tag("footer_you_tube.png", :alt => "You Tube"), "https://www.youtube.com/channel/UCxXn4FxKr5OyKwcbhlekSwg", :target => "_blank", :title => "You Tube" %>
         <%= link_to image_tag("footer_twitter.png", :alt => "Twitter"), "https://twitter.com/bannerjones", :target => "_blank", :title => "Twitter" %>
-				<%= link_to image_tag("footer_facebook.png", :alt => "Facebook"), "https://www.facebook.com/BannerJonesSolicitors", :target => "_blank", :title => "Facebook" %>
+        <%= link_to image_tag("footer_facebook.png", :alt => "Facebook"), "https://www.facebook.com/BannerJonesSolicitors", :target => "_blank", :title => "Facebook" %>
         <%= link_to image_tag("footer_linked.png", :alt => "LinkedIn"), "http://www.linkedin.com/company/1134191?trk=vsrp_companies_res_name&trkInfo=VSRPsearchId%3A2509922011394111907087%2CVSRPtargetId%3A1134191%2CVSRPcmpt%3Aprimary", :target => "_blank", :title => "LinkedIn" %>
         <%= link_to image_tag("footer_google.png", :alt => "Google Plus"), "https://plus.google.com/u/5/b/104304970380605400036/+bannerjones/posts", :target => "_blank", :title => "Google+" %>
       </div>
 
-			<% if is_home? %>
-			<div id="reviews" class="six columns text-right">
-				<script type="text/javascript">
-					jQuery( document ).ready(function() {
-						var rating = jQuery('span[itemprop="rating"] span:first-of-type').text();
-						jQuery('<img src="/images/rich-snippets/' +  rating + '.png" /><br />').insertAfter('span[itemprop="itemreviewed"]');
-					});
-				</script>
+      <% if is_home? %>
+      <div id="reviews" class="six columns text-right">
+        <script type="text/javascript">
+          jQuery( document ).ready(function() {
+            var rating = jQuery('span[itemprop="rating"] span:first-of-type').text();
+            jQuery('<img src="/images/rich-snippets/' +  rating + '.png" /><br />').insertAfter('span[itemprop="itemreviewed"]');
+          });
+        </script>
 
-				<div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
-					<span itemprop="itemreviewed">Banner Jones Solicitors Reviews</span>
-					<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
-						<span itemprop="average">4.5</span>
-						out of <span itemprop="best">5</span>
-					</span>
-					based on <span itemprop="votes">24</span> ratings.
-				</div>
-			</div>
-			<% end %>
+        <div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+          <span itemprop="itemreviewed">Banner Jones Solicitors Reviews</span>
+          <span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
+            <span itemprop="average">4.5</span>
+            out of <span itemprop="best">5</span>
+          </span>
+          based on <span itemprop="votes">24</span> ratings.
+        </div>
+      </div>
+      <% end %>
     </div>
 
     <hr/>
 
     <div class="footer_awards">
-    	<h3>Our Awards</h3>
-      	<%#= link_to_page image_tag("logo_awards_top_tier.gif", :alt => "ICFM Highly Commended Top Tier", :title => "ICFM Highly Commended Top Tier", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
+      <h3>Our Awards</h3>
+        <%#= link_to_page image_tag("logo_awards_top_tier.gif", :alt => "ICFM Highly Commended Top Tier", :title => "ICFM Highly Commended Top Tier", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
         <%= link_to_page image_tag("logo_awards_top_tier.gif", :alt => "ICFM Highly Commended Top Tier", :title => "ICFM Highly Commended Top Tier", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
-      	<%= link_to_page image_tag("logo_awards_acqcountry.gif", :alt => "ACQ Counrty Awards 2009", :title => "ACQ Counrty Awards 2009", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 30px;"), 'Awards' %>
+        <%= link_to_page image_tag("logo_awards_acqcountry.gif", :alt => "ACQ Counrty Awards 2009", :title => "ACQ Counrty Awards 2009", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 30px;"), 'Awards' %>
         <%= link_to_page image_tag("logo_awards_business_awards.gif", :alt => "Derbyshire Times Business Awards", :title => "Derbyshire Times Business Awards", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
         <%= link_to_page image_tag("logo_best_2011.gif", :alt => "Derbyshire's Best Finalist 2011", :title => "Derbyshire's Best Finalist 2011", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 20px;"), 'Awards' %>
         <%= link_to_page image_tag("logo_global_2011.gif", :alt => "Global Awards 2011 Winner", :title => "Global Awards 2011 Winner", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 20px;"), 'Awards' %>
     </div>
 <div class="clear"></div>
-	</div>
+  </div>
   </div>
 
   <div class="footer row">
@@ -384,31 +384,31 @@
 </div> <!--end container row -->
 
 <script>
-	function isIE () {
-		var myNav = navigator.userAgent.toLowerCase();
-		return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
-	}
+  function isIE () {
+    var myNav = navigator.userAgent.toLowerCase();
+    return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+  }
 
-	if (!isIE()) {
-		// http://www.sitepoint.com/javascript-media-queries/
-		// media query event handler
-		if (matchMedia) {
-			var mq = window.matchMedia("(min-width: 1024px)");
-			mq.addListener(WidthChange);
-			WidthChange(mq);
-		}
+  if (!isIE()) {
+    // http://www.sitepoint.com/javascript-media-queries/
+    // media query event handler
+    if (matchMedia) {
+      var mq = window.matchMedia("(min-width: 1024px)");
+      mq.addListener(WidthChange);
+      WidthChange(mq);
+    }
 
-		// media query change
-		function WidthChange(mq) {
-			if (!mq.matches) {
-				var elements = document.querySelectorAll('[data-responsive]');
+    // media query change
+    function WidthChange(mq) {
+      if (!mq.matches) {
+        var elements = document.querySelectorAll('[data-responsive]');
 
-				for (var i = elements.length - 1; i >= 0; i--) {
-					elements[i].style.backgroundImage = "url(" + elements[i].getAttribute("data-responsive") + ")";
-				}
-			}
-		}
-	}
+        for (var i = elements.length - 1; i >= 0; i--) {
+          elements[i].style.backgroundImage = "url(" + elements[i].getAttribute("data-responsive") + ")";
+        }
+      }
+    }
+  }
 
 
 </script>

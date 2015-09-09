@@ -1,10 +1,10 @@
 class LegalAidRequest < ActiveRecord::Base
 
-	acts_as_eskimagical
+  acts_as_eskimagical
 
-	after_create :contact
+  after_create :contact
 
-	named_scope :position, :order => "position"
+  named_scope :position, :order => "position"
   named_scope :active, :conditions => ["recycled = ? AND display = ?", false, true]
   named_scope :recycled, :conditions => ["recycled = ?", true]
   named_scope :unrecycled, :conditions => ["recycled = ?", false]
@@ -14,7 +14,7 @@ class LegalAidRequest < ActiveRecord::Base
   validates_presence_of :phone, :if => Proc.new{|x| x.email.blank? }
 
   def active?
-  	display? && !recycled?
+    display? && !recycled?
   end
 
   # each model should have a name method, if name is not in the db and a summary method, if summary is not in the db
