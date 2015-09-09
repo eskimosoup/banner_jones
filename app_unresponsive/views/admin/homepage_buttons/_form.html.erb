@@ -1,0 +1,24 @@
+<% form_for [:admin, @homepage_button], :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  
+  <p class="admin_note">
+    Please either select an internal page for this button to link to or enter an external url.  If you enter an external url it will take priority over the internal link.
+  </p><br />
+  
+  <fieldset>
+  <legend>Link</legend>
+  <p>
+    <%= f.label :internal_link %><br />
+    <%= f.select :internal_link, link_options_for_select(f.object.internal_link) %>
+  </p>
+  
+  <p>
+    <%= f.label :external_link %><br />
+    <%= f.text_field :external_link %>
+  </p>
+  </fieldset>
+  
+  <%= image_field_tag f, :homepage_button, :image %>
+
+  <p><%= f.submit "Submit" %></p>
+<% end %>

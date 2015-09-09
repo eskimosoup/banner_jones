@@ -1,0 +1,1 @@
+DEPARTMENTS = ["Family Law", "Residential Conveyancing", "Personal Injury", "Criminal Defence", "Driving Offences", "Wills & Probate", "Employment Law", "Dispute Resolution", "Wealth Management", "Business Legal Services", "Notary"]

@@ -1,0 +1,44 @@
+<% hide_left %>
+<% hide_right %>
+<% hide_search %>
+<% title @page_content.navigation_title %>
+
+<div class="home_form">
+<%= render :partial => "shared/site_search_form" %>
+</div>
+
+<div id="splash_page">
+
+<div class="top_curve_container">
+
+	<% if @page_node.ancestors.include?(PageNode.family_node.first) %>
+  <div class="top_curve_box_yellow">
+  <% else %>
+  <div class="top_curve_box_red">
+  <% end %>
+    <div class="text">
+      <p>
+        <%= @page_content.banner_content %>
+      </p>
+      <br />
+      <p class="more" align="right"><%= link_to "View more details", url_for(@page_node.path), {:class=>"medium"} %></p>
+    </div>
+    <div class="picture">
+      <span></span>
+      <%= image_tag @page_content.banner_image.url(:main), :border => "0", :hspace => "0", :vspace => "0", :alt => " " %>	
+    </div>
+  </div>
+  
+</div>  
+  <%= @page_content.splash_content %>
+  
+  <br />
+  <br />
+  <div class="large_button_links">
+    <% for page in PageNode.active.navigation.children(@page_node.id) %>
+      <%= render "page_nodes/button", :node => page %>
+    <% end %>
+  </div>
+
+
+</div>

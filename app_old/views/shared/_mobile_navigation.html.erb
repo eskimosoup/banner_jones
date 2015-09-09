@@ -1,0 +1,59 @@
+<div class="row mobile-header">
+  <div class="twelve columns show-for-small">
+    <%= link_to image_tag("mobile-logo.png", :alt => SiteSetting.find_by_name("Site Name").try(:value), :title => SiteSetting.find_by_name("Site Name").try(:value), :border => "0", :hspace => "0", :vspace => "0"), {:controller => 'web', :action => 'index'}, :class => "mobile-logo" %>
+  </div>
+
+
+<nav class="sections top-nav-mobile show-for-small">
+
+  <ul class="top-level">
+    <h2><%#= link_to main_page_node.navigation_title, url_for(page_node.path) %></h2>
+    
+    <li class="arrow"><a href="#" title="Toggle more details" onclick="navToggle('more-dropdown');return false;">More</a></li>
+    <li class="arrow"><a href="#" title="Toggle more details" onclick="navToggle('family-dropdown');return false;">You</a></li>
+    <li class="arrow"><a href="#" title="Toggle more details" onclick="navToggle('business-dropdown');return false;">Business</a></li>
+  </ul>
+
+  <section id="business-dropdown" class="hide-nav">
+    <ul class="section-2-left">
+      <% for page_node in PageNode.active.position.roots.navigation %>
+        <% if [20].include?(page_node.id) %>
+          <% children = PageNode.children(page_node.id).active.navigation.find(:all, :order => "name ASC") %>
+            <% for child in children %>
+              <li><%= link_to child.navigation_title, url_for(child.path) %></li>
+            <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+
+  <section id="family-dropdown" class="hide-nav">
+    <ul class="section-2-left">
+      <% for page_node in PageNode.active.position.roots.navigation %>
+        <% if [21].include?(page_node.id) %>
+          <% children = PageNode.children(page_node.id).active.navigation.find(:all, :order => "name ASC") %>
+            <% for child in children %>
+              <li><%= link_to child.navigation_title, url_for(child.path) %></li>
+            <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+
+  <section id="more-dropdown" class="hide-nav">
+    <ul class="section-2-left">
+      <% wealth = PageNode.find_by_name('Wealth Management') %>
+    <% unless wealth.blank? %>
+      <li class="no-arrow"><%= link_to "Wealth", url_for(wealth.path) %></li>
+    <% end %>
+      <% for page_node in PageNode.active.position.roots.navigation %>
+        <% unless [20, 21, 192].include?(page_node.id) %>
+          <% children = PageNode.children(page_node.id).active.navigation.find(:all, :order => "name ASC") %>
+            <li><%= link_to page_node.navigation_title, url_for(page_node.path) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+</nav>
+
+</div>

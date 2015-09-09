@@ -1,0 +1,14 @@
+<% title "Videos" %>
+
+
+<p><%= link_to "New Video", new_admin_video_path %></p>
+
+ 
+<% form_for @search do |f| %>
+  <p>
+    <%= f.text_field :name_or_summary_or_youtube_url_like %>
+    <%= f.submit "Search" %>
+  </p>
+<% end %>
+
+<%= eskimo_table({:columns => ["name", "youtube_url"], :list => @videos}) %>

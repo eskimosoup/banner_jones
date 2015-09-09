@@ -1,0 +1,134 @@
+<% form_for [:admin, @legal_aid_request], :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  
+  <% field_set_tag 'Approved' do -%>
+    <p>
+      <%= f.object.approved? ? "Yes" : "No" %>
+    </p>
+  <% end -%>
+  
+  <% field_set_tag 'Basic Info' do -%>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.object.name %>
+  </p>
+
+  <p>
+    <%= f.label :postcode %><br />
+    <%= f.object.postcode %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br />
+    <%= f.object.email %>
+  </p>
+
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.object.phone %>
+  </p>
+  
+  <% end -%>
+  
+  <% field_set_tag 'Income' do -%>
+
+  <p>
+    <%= f.label :benefits, "Do you currently receive any benefits?" %><br />
+    <%= f.object.benefits? ? "Yes" : "No" %>
+  </p>
+
+  <p>
+    <%= f.label :gross_income, "Monthly gross income of earnings for yourself and anyone living with you" %><br />
+    <%= ntp f.object.gross_income %>
+  </p>
+
+  <p>
+    <%= f.label :other_income, "Other income you receive such as maintenance, CSA, pensions" %><br />
+    <%= ntp f.object.other_income %>
+  </p>
+
+  <p>
+    <%= f.label :benefits_income, "Total of other benefits received" %><br />
+    <%= ntp f.object.benefits_income %>
+  </p>
+  
+  <p>
+    <strong>
+      Total Income: <%= ntp f.object.total_income %>
+    </strong> 
+  </p>
+    
+  <p>
+    <%= f.label :children_out, "Do you have any children living with you" %><br />
+    <%= f.object.children_out %>
+  </p>
+
+  <p>
+    <%= f.label :rent_out, "What is your monthly mortgage or rent payment" %><br />
+    <%= ntp f.object.rent_out %>
+  </p>
+
+  <p>
+    <%= f.label :people_out, "How many people’s wages are included in the gross monthly earnings" %><br />
+    <%= f.object.people_out %>
+  </p>
+
+  <p>
+    <%= f.label :partner_out, "Do you have a partner whose income has been included above or who lives with you and is dependant upon you" %><br />
+    <%= f.object.partner_out? ? "Yes" : "No" %>
+  </p>
+
+  <p>
+    <%= f.label :maintenance_out, "Do you pay maintenance for any children or former spouse who do not live with you, if so how much" %><br />
+    <%= ntp f.object.maintenance_out %>
+  </p>
+
+  <p>
+    <%= f.label :childcare_out, "Do you pay childcare costs because you work or are self employed" %><br />
+    <%= ntp f.object.childcare_out %>
+  </p>
+
+  <p>
+    <%= f.label :tax_out, "Please state the income tax and NI deducted from your monthly wage" %><br />
+    <%= ntp f.object.tax_out %>
+  </p>
+  
+  <p>
+    <strong>
+      Total Outgoings: <%= ntp f.object.total_outgoings %>
+    </strong> 
+    <br />
+    <strong>
+      Disposable Income: <%= ntp f.object.disposable_income %>
+    </strong> 
+  </p>
+  
+  <% end -%>
+  
+  <% field_set_tag 'Property' do -%>
+
+    <p>
+      Equity of more than £100,000?<br />
+      <%= f.object.high_equity? ? "Yes" : "No" %>
+    </p>
+   
+  <% end -%>
+  
+  <% field_set_tag 'Savings' do -%>
+
+    <p>
+      Savings of more than &pound;8,000?<br />
+      <%= f.object.high_savings? ? "Yes" : "No" %>
+    </p>
+  
+  <% end -%>
+  
+  <p>
+    <%= f.check_box :contacted %>
+    <%= f.label :contacted %>
+  </p>
+  
+  <p><%= f.submit "Update" %></p>
+
+<% end %>

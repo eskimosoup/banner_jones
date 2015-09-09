@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>
+    <% if (@title && !@title.blank?) && (@name && !@name.blank?) %>
+      <%= @title %> <%= @name %> 
+    <% elsif (!@title || @title.blank?) && (@name && !@name.blank?) %>
+      <%= @name %> 
+    <% elsif (!@name || @name.blank?) %>
+      Someone 
+    <% end %>
+    has filled in the will enquiry form
+    </h1>
+    <h2>Contact details:</h2>
+    <% if @tel && !@tel.blank? %>
+    	<strong>Telephone: </strong> <%= @tel %><br />
+    <% end %>
+    <% if @email && !@email.blank? %>
+    	<strong>Email: </strong> <%= auto_link @email %><br />
+    <% end %>
+    <h2>Enquiry:</h2>
+    <%= @enquiry %>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<% title "Legal Aid Requests" %>
+
+
+<p class="admin_note">
+  Below is a list of request for Legal Aid Requests generated through the Legal Aid Calculator.  
+</p>
+ 
+<% form_for @search do |f| %>
+  <p>
+    <%= f.text_field :name_like %>
+    <%= f.submit "Search" %>
+  </p>
+<% end %>
+
+<%= eskimo_table({:columns => ["name", "postcode", "email", "phone", 
+  ["Approved", lambda{|x| x.approved? ? "Yes" : "No" }, nil],
+  ["Contacted", lambda{|x| x.contacted? ? "Yes" : "No" }, "contacted"]
+  ], :list => @legal_aid_requests}) %>

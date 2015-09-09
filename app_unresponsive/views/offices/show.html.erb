@@ -1,0 +1,22 @@
+<% hide_right %>
+
+<h1><%= title @office.name %></h1>
+
+<% if @office.postcode? %>    
+  <iframe width="700" height="358" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=<%= @office.postcode.gsub(" ", "+") %>&sll=53.800651,-4.064941&sspn=26.69859,86.572266&ie=UTF8&hq=&hnear=<%= @office.postcode.gsub(" ", "+") %>&z=16&iwloc=0&output=embed"></iframe>
+  <p>
+    <a href="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=<%= @office.postcode.gsub(" ", "+") %>&sll=53.800651,-4.064941&sspn=26.69859,86.572266&ie=UTF8&hq=&hnear=<%= @office.postcode.gsub(" ", "+") %>&z=16&iwloc=0">View Larger Map</a>
+  </p>
+<% end %>
+
+<h2>Address</h2>
+<%= simple_format(@office.full_address) %>
+
+<h2>Directions</h2>
+<%= @office.directions %>
+
+<hr />
+
+<p align="right">
+  <%= link_to "View All", offices_path %>
+</p>

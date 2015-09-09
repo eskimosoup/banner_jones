@@ -1,0 +1,36 @@
+<h1><%= title "Your Conveyancing Quotation" %></h1>
+
+<% unless @hide %>
+  <p>
+    Feel free to bookmark this page and revisit it when you like, or you can 
+    <br /><%= link_to "download a PDF version", pdf_for_conveyancing_quote_path(@cq, :p => @cq.passcode, :format => "pdf"), {:class=>"pdf_doc", :target => "_blank"} %> of the quote.
+  </p>
+  <hr />
+<% end %>
+
+<% if params[:a] -%>
+  
+<% end -%>
+
+<div class="conveyancing_quote">
+	<%= render @conveyancing_quote.show_partial %>
+</div>
+
+<% unless @hide %>
+  <% content_for :right do %>
+    <% if @cq.status == "Quote Generated" %>
+      <% form_tag register_interest_conveyancing_quote_path(@cq) do %>
+        <h3>Like what you see?</h3>
+        <p>
+          Complete your quote and we will get in contact with you to move forward with your conveyancing.
+        </p>
+        <p>
+          <%= submit_tag " ", :class => "complete_quote" %>
+        </p>
+      <% end %>
+    <% elsif @cq.status == "Interest Registered" %>
+      <p>You have already requested a callback for your quote.  We will get back to you as soon as we can.</p>
+    <% end %>
+  <% end %>
+<% end %>
+

@@ -1,0 +1,20 @@
+<% link = team_member_path(team_member, :team_category => params[:team_category]) %>
+
+  <div class="three mobile-four columns team-member" >
+
+  <% if team_member.image? %>
+    <% if team_member.image_alt.blank? %>
+      <%= link_to image_tag(team_member.image.url(:index_page)), link %>
+    <% else %>
+        <%= link_to image_tag(team_member.image.url(:index_page), :alt => team_member.image_alt ), link %>
+    <% end %>
+  <% else %>
+  	<%= link_to image_tag("no_image.gif", {:size => "164x164"}), link %>
+  <% end %>
+  <p>
+    <%= link_to h(team_member.name), link %><br />
+    <span><%=h team_member.role %></span><br/>
+    <span><%= team_member.office %></span>
+  </p>
+  </div>
+

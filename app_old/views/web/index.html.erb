@@ -1,0 +1,96 @@
+<% show_rss %>
+
+<script language="JavaScript">
+
+var divs_to_fade = new Array(<%= HomeHighlight.active.position.collect{|x| "\"highlight_#{x.id}\""}.join(',') %>);
+var i = 0;
+var wait = 5000;
+
+function swapFade()
+{
+  Effect.Fade(divs_to_fade[i], { duration:1, from:1.0, to:0.0 });
+  i++;
+  if (i == <%= HomeHighlight.active.length %>) i = 0;
+  Effect.Appear(divs_to_fade[i], { duration:1, from:0.0, to:1.0 });
+}
+
+function startPage()
+{
+  setInterval('swapFade()', wait);
+}
+
+</script>
+
+<% if HomeHighlight.active.length > 1 %>
+<% content_for :body do %>
+  <body onLoad="startPage(); P7_ExpMenu();">
+<% end %>
+<% end %>
+
+<% hide_left %>
+<% hide_right %>
+<% hide_search %>
+<% title("Solicitors in Sheffield & Chesterfield") %>
+<% content_for :head do %>
+  <meta name="description" content="An award winning law firm with offices across the region. We Offer quality advice across the full spectrum of legal services. See how we can help today.">
+<% end %>
+
+<div class="top_curve_container twelve columns hide-for-small">
+  <div class="home_form">
+    <%= render :partial => "shared/site_search_form" %>
+  </div>
+
+  <% for highlight in HomeHighlight.active.position %>
+    <div class="top_curve_box_<%= highlight.color %>" id="highlight_<%= highlight.id %>" style="display:<%= highlight == HomeHighlight.active.position.first ? "" : "none" %>;">
+	    <div class="text">
+        <h1><%= highlight.headline %></h1>
+        <p><%= highlight.summary %></p>
+        <p class="more" align="right"><%= link_to "View more details", highlight.link, {:class=>"medium"} %></p>
+      </div>
+
+      <div class="picture">
+      	<span></span>
+      	<% if highlight.image? %>
+    		  <%= image_tag highlight.image.url(:banner) %>
+    		<% else %>
+      		<%= image_tag "red_curve_pic_1.jpg" %>
+    		<% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+  <div class="large_button_links twelve columns">
+  <% 6.times do |count| %>
+    <% button = HomepageButton.get(count+1) %>
+    <% if button.image? %>
+      <div class="four columns big-link-button">
+      <% link = button.external_link? ? button.external_link : button.internal_link %>
+      <%= link_to "", link, :class => "home-buttons", :style=>"background-image: url(#{button.image.url(:button)})", :popup => button.external_link? ? true : false %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+
+<!-- Google Code for Post Impression Homepage View Conversion Page -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 1038213147;
+  var google_conversion_language = "en";
+  var google_conversion_format = "1";
+  var google_conversion_color = "ffffff";
+  var google_conversion_label = "wI38CMGO8QcQm8CH7wM";
+  var google_remarketing_only = false;
+  /* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+  <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1038213147/?label=wI38CMGO8QcQm8CH7wM&amp;guid=ON&amp;script=0"/>
+  </div>
+</noscript>
+
+<% is_home %>

@@ -1,0 +1,20 @@
+<% show_rss %>
+
+<h1><%= title "News#{@title}" %></h1>
+
+<% if @articles.length > 0 %>
+<br />
+  <% for article in @articles %>
+    <%= render "articles/article", :article => article %>
+  <% end %>
+  
+  <%= will_paginate @articles %>
+  
+<% else %>
+ <p>No articles to display.</p>
+<% end %>
+
+<% content_for :right do  %>
+    <%= render :partial => "tags" %>
+    <%= render :partial => "dates" %>
+<% end %>

@@ -1,0 +1,5 @@
+<% title "Team Categories" %>
+
+<p><%= link_to "New Team Category", new_admin_team_category_path %></p>
+
+<%= eskimo_table({:columns => ["name"], :list => @team_categories, :manual_sorting => true}) %>

@@ -1,0 +1,38 @@
+<% if @job.offices.empty? -%>
+  <h1><%= title @job.name %></h1>
+<% else -%>
+  <h1><%= title @job.name + ' - ' + @job.offices.collect{|x| x.name }.to_sentence %></h1>
+<% end -%>
+
+<strong>Closing Date: </strong><%= simple_date_format(@job.closing_date) %>
+
+<p>
+  <%=h @job.summary %>
+</p>
+
+<h2>Full Description</h2>
+
+  <%= @job.main_content %>
+
+
+<% if @job.application_pack? %>
+  <p>
+    <%= link_to "Download the Application Pack", @job.application_pack.url(:original, false) %>
+  </p>
+<% end %>
+
+<hr />
+
+<p align="right" class="more">
+  <%= link_to "View all Jobs", jobs_path, {:class => "medium"} %>
+</p>
+
+<% content_for :right do %>
+  <% if !@jobs.empty? %>
+    <h3>More roles at <%= @job.offices.length > 1 ? 'any of these offices' : 'this office' %></h3>
+    <% @jobs[0..5].each do |job| %>
+      <p><%= link_to job.name, job %><br />
+      <%= job.summary[0..50] %>...</p>
+    <% end %>
+  <% end %>
+<% end %>

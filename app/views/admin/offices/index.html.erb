@@ -1,0 +1,14 @@
+<% title "Offices" %>
+
+
+<p><%= link_to "New Office", new_admin_office_path %></p>
+
+ 
+<% form_for @search do |f| %>
+  <p>
+    <%= f.text_field :name_like %>
+    <%= f.submit "Search" %>
+  </p>
+<% end %>
+
+<%= eskimo_table({:columns => ["name", "postcode", "phone"], :list => @offices, :images => true}) %>

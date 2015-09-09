@@ -1,0 +1,33 @@
+<h2>For a Tranfer of Equity at <span><%= number_to_pounds @cq.equity_amount %></span></h2>
+<hr />
+
+<h3>BANNER JONES LTD STANDARD CHARGES</h3>
+<p>
+  Legal Fees in connection with your transfer of equity
+  <span><%= number_to_pounds @cq.fixed_fee %></span>
+</p>
+
+<hr />
+
+<p>
+  CHARGES FOR TRANSFER OF EQUITY:	<span><%= number_to_pounds @cq.subtotal %></span><br />
+  VAT:	<span><%= number_to_pounds @cq.vat %></span><br />
+  TOTAL:	<span><%= number_to_pounds @cq.total %></span><br />
+  <br />
+  Plus any Disbursements and additional supplemental fees	
+</p>
+
+<hr />
+
+
+<h3>DISBURSEMENTS</h3>
+<p>
+  These costs are NOT our FEES and must be paid to 3rd parties such as government agencies (Inland Revenue and Land Registry) in order to carry out your purchase for you.</p>
+</p>
+<p>
+  Disbursements are dependent on whether you transfer at undervalue and whether an  indemnity is required. Any additional charges will be confirmed by the conveyancer dealing with your case.
+</p>
+
+<hr />
+
+<%= render "conveyancing_quotes/show/supplemental_fees", :types => ['Transfer of Equity'], :hide_search => true, :hide_leasehold => true %>

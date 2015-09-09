@@ -1,0 +1,25 @@
+<% title "Case Studies" %>
+
+<h1><%=h @case_study.name %></h1>
+
+<% if @case_study.image? %>
+    <%= image_tag @case_study.image.url(:show), :class=>"image_left" %>
+<% end %>
+
+<p>
+  <%= @case_study.summary %>
+</p>
+  <%= @case_study.main_content %>
+
+<p class="tags">
+  <%= @case_study.tag_list.collect{|x| link_to(x.to_s, case_studies_path(:tag => x.to_s)) }.join(' | ') %>
+</p>
+
+<hr />
+<p align="right" class="more">
+  <%= link_to "View all", case_studies_path, {:class=>"small"} %>
+</p>
+
+<% content_for :right do  %>
+  <%= render :partial => "tags" %>
+<% end %>

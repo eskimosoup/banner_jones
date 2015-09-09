@@ -1,0 +1,15 @@
+<%= render :partial => "page_contents/#{@page_node.likely_layout}",
+           :locals => {:content => @page_node.active_content} %>
+
+<script type="text/javascript">
+  jQuery( document ).ready(function() {
+    var rating = jQuery('span[itemprop="rating"] span:first-of-type').text();
+    jQuery('<img src="/images/rich-snippets/' +  rating + '.png" style="display:block; margin: 0 auto 5px auto;" />').insertAfter('span[itemprop="itemreviewed"]');
+  });
+</script>
+
+<% unless @page_node.active_content.rich_snippet.blank? %>
+  <% content_for :left do %>
+    <%= @page_node.active_content.rich_snippet %>
+  <% end %>
+<% end %>

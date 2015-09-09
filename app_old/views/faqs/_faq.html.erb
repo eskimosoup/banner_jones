@@ -1,0 +1,6 @@
+<p>
+<strong>Q. </strong><%= link_to_function faq.question, "toggleDiv(this, 'faq_#{faq.id}', 'down', 'up')", :class => "down" %>
+<div id="faq_<%= faq.id %>" style="display:none;">
+  <%= faq.answer %>
+</div>
+</p>

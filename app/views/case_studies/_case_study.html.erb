@@ -1,0 +1,17 @@
+<% if case_study.image? %>
+ <%= link_to image_tag(case_study.image.url(:index), :class=>"image_left"), {:action => "show",
+  :id => case_study.id,
+  :tag => params[:tag]} %>
+<% end %>
+
+<h2 style="margin: 0px; padding: 0px; font-size: 14px;"><%= link_to h(case_study.name), {:action => "show",
+  :id => case_study.id,
+  :tag => params[:tag]} %></h2>
+
+<%=h case_study.summary %><br />
+
+<p  align="right" class="more"><%= link_to "Read more", {:action => "show",
+  :id => case_study.id,
+  :tag => params[:tag]}, {:class=>"small"} %></p>
+
+  <hr />

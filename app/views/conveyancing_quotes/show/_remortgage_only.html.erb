@@ -1,0 +1,32 @@
+<h2>For a Remortgage at <span><%= number_to_pounds @cq.remortgage_amount %></span></h2>
+<hr />
+
+<h3>BANNER JONES LTD STANDARD CHARGES</h3>
+<p>
+  Legal Fees in connection with your remortgage
+  <span><%= number_to_pounds @cq.fixed_fee %></span>
+</p>
+
+<hr />
+
+<p>
+  CHARGES FOR REMORTGAGE:	<span><%= number_to_pounds @cq.subtotal %></span><br />
+  VAT:	<span><%= number_to_pounds @cq.vat %></span><br />
+  TOTAL:	<span><%= number_to_pounds @cq.total %></span><br />
+  <br />
+  Plus any Disbursements and additional supplemental fees	
+</p>
+
+<hr />
+
+
+<h3>DISBURSEMENTS</h3>
+<p>
+  Searches are not usually required as we can provide indemnity insurance to cover this, however some lenders may require searches to be completed.<br />
+  Search Indemnity Insurance &pound;21(inc vat)<br />
+  Land Registration Fee	<span><%= number_to_pounds @cq.land_reg_fees %></span><br />
+</p>
+
+<hr />
+
+<%= render "conveyancing_quotes/show/supplemental_fees", :types => ['Remortgage'], :hide_search => true, :hide_leasehold => true %>

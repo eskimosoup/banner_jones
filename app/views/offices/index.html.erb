@@ -1,0 +1,17 @@
+<h1><%= title "Offices in Chesterfield, Sheffield & Mansfield" %></h1>
+
+<% if @offices.length > 0 %>
+  <% for office in @offices %>
+    <h3><%= link_to office.name, office %></h3>
+    <div style="float: right; width: 125px; text-align: right; margin-top: 10px;">
+      <%= link_to image_tag("view_map.jpg", :alt => office.image_alt), office %>
+   </div>
+    <%= simple_format office.full_address %>
+    <%= link_to "Get Directions", office %>
+    <br />
+    <br />
+  <% end %>
+  <%= will_paginate @offices %>
+<% else %>
+  No Offices to display.
+<% end %>

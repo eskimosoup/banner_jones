@@ -1,0 +1,25 @@
+/*--Links--*/
+a:link, a:visited, a:active, .more a:hover {
+	color: #ce8b03;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #666666; 
+}
+
+/*--Left Nav--*/
+.left_nav ul li a:hover, .left_nav ul li a.highlight:link, .left_nav ul li a.highlight:visited, .left_nav ul li a.highlight:hover, .left_nav ul li a.highlight:active {
+	color: #ffad07;
+	background-image: url(../images/nav_arrow_family.gif);
+}
+
+/*--Right Hand Side--*/
+.news_summary a:hover {
+	color: #000000; 
+	background-color: #ffad07; 
+}	
+
+ul.bullet_black_button li a:link, ul.bullet_black_button li a:visited, ul.bullet_black_button li a:active {
+	background-image: url(../images/bullet_yellow_bg.gif);
+}

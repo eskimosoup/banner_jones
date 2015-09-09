@@ -1,0 +1,27 @@
+<% show_rss %>
+
+<% title "News" %>
+
+  <h1><%=h @article.headline %></h1>
+
+  <span class="date"><%=h simple_date_format @article.date %></span>
+
+
+<% if @article.image? %>
+    <%= image_tag @article.image.url(:show), :class=>"image_left" %>
+<% end %>
+
+<%= @article.main_content %>
+  
+<p class="tags">
+  <%= @article.tag_list.collect{|x| link_to(x.to_s, articles_path(:tag => x.to_s)) }.join(' | ') %>
+</p>
+<hr />
+<p align="right" class="more">
+  <%= link_to "View all stories", articles_path, {:class=>"medium"} %>
+</p>
+
+<% content_for :right do  %>
+  <%= render :partial => "tags" %>
+  <%= render :partial => "dates" %>
+<% end %>

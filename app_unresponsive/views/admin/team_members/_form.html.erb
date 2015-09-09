@@ -1,0 +1,156 @@
+<% form_for [:admin, @team_member], :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+
+  <fieldset>
+    <legend>Basic Info</legend>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :role %><br />
+      <%= f.text_field :role %>
+    </p>
+  </fieldset>
+
+  <%= image_field_tag f, :team_member, :image %>
+
+  <%= image_field_tag f, :team_member, :casual_image %>
+
+  <fieldset>
+    <legend>Contact Info</legend>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :telephone %><br />
+      <%= f.text_field :telephone %>
+    </p>
+
+    <p>
+      <%= f.label :office %><br />
+      <%= f.text_field :office %>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Professional Questions</legend>
+    <p>
+      <%= f.label :q1, "Where did you study?" %><br />
+      <%= f.text_field :q1 %>
+    </p>
+
+    <p>
+      <%= f.label :q2, "When did you qualify?" %><br />
+      <%= f.text_field :q2 %>
+    </p>
+
+    <p>
+      <%= f.label :q3, "What do you specialise in?" %><br />
+      <%= f.text_area :q3 %>
+    </p>
+		
+		<p>
+      <%= f.label :specialism_content %><br />
+      <%= f.advanced_text_area :specialism_content %>
+    </p>
+
+    <p>
+      <%= f.label :q4, "Recent case successes" %><br />
+      <%= f.text_area :q4 %>
+    </p>
+		
+		<p>
+      <%= f.label :case_successes_content %><br />
+      <%= f.advanced_text_area :case_successes_content %>
+    </p>
+
+    <p>
+      <%= f.label :q5, "Accreditations & memberships" %><br />
+      <%= f.text_area :q5 %>
+		</p>
+
+  </fieldset>
+
+	<fieldset>
+		<legend>Accreditation Images</legend>
+		<p>
+			<%= image_field_tag f, :team_member, :accred_1_image %>
+		</p>
+		<p>
+			<%= f.helpful_label :accred_1_link, "Accreditation 1 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
+			<%= f.text_field :accred_1_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
+		</p>
+		<p>
+			<%= image_field_tag f, :team_member, :accred_2_image %>
+		</p>
+		<p>
+			<%= f.helpful_label :accred_2_link, "Accreditation 2 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
+			<%= f.text_field :accred_2_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
+		</p>
+		<p>
+			<%= image_field_tag f, :team_member, :accred_3_image %>
+		</p>
+		<p>
+			<%= f.helpful_label :accred_3_link, "Accreditation 3 Link", "If you would like this image to link to an external site, please enter the fully qualified URL here (e.g. http://www.bannerjones.co.uk)" %>&nbsp;
+			<%= f.text_field :accred_3_link, {:placeholder => "http://www.bannerjones.co.uk"} %>
+		</p>
+	</fieldset>
+
+  <fieldset>
+    <legend>Personal Questions</legend>
+    <p>
+      <%= f.label :q6, "What was your first job?" %><br />
+      <%= f.text_area :q6 %>
+    </p>
+
+    <p>
+      <%= f.label :q7, "What are your hobbies?" %><br />
+      <%= f.text_area :q7 %>
+    </p>
+
+    <p>
+      <%= f.label :q8, "What's your favourite drink?" %><br />
+      <%= f.text_area :q8 %>
+    </p>
+
+    <p>
+      <%= f.label :q9, "What would your ideal holiday be?" %><br />
+      <%= f.text_area :q9 %>
+    </p>
+
+    <p>
+      <%= f.label :q10, "What has been your greatest achievement this year?" %><br />
+      <%= f.text_area :q10 %>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Pages to Appear On</legend>
+    <p>
+      <%= check_box_tree_tag f, :page_nodes, PageNode.service_nodes, {:scrolling => false,
+                                                                      :manual_order => true,
+                                                                      :name_method => "navigation_title"} %>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Team Categories</legend>
+    <p>
+      <%= check_box_tree_tag f, :team_categories, TeamCategory.unrecycled.position, {:scrolling => false} %>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Testimonials</legend>
+    <p>
+      <%= check_box_tree_tag f, :testimonials, Testimonial.unrecycled.position, {:scrolling => false,
+                                                                                 :name_method => "long_name"} %>
+    </p>
+  </fieldset>
+  
+  <p><%= f.submit "Submit" %></p>
+<% end %>

@@ -1,0 +1,143 @@
+<%= toggle_fieldset_controls %>
+
+<%= toggle_fieldset "Content", "content", true %>
+<p>
+  <%= f.label "SEO Page Title" %><br />
+  <%= f.text_field :title %>
+</p>
+
+<p>
+  <%= f.label "Displayed Page Title (will fall back to SEO Page Title if blank)" %><br />
+  <%= f.text_field :page_main_title %>
+</p>
+
+<p>
+  <%= f.label :main_content %><br />
+  <%= f.advanced_text_area :main_content %>
+</p>
+</fieldset>
+
+<%= toggle_fieldset "Highlight" %>
+<p>
+  <%= f.label :highlight_style %><br />
+  <%= f.select :highlight_style, [["Family", "family_highlight"], ["Business", "business_highlight"], ["Other", "other_highlight"]] %>
+</p>
+
+<p>
+  <%= f.label :highlight_content %><br />
+  <%= f.simple_text_area :highlight_content %>
+</p>
+
+<p>
+  <%= f.helpful_label :highlight_link, "Internal highlight link", "Select a page on the website to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
+  <%= f.select :highlight_link, link_options_for_select(f.object.highlight_link, :include_blank => "No Link", :additional_links => ["Anchors", [["Online Conveyancine Form", "#online_calculator"]]]) %>
+</p>
+
+<p>
+  <%= f.helpful_label :highlight_external_link, "External highlight link", "Enter a (fully qualified) URL to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
+  <%= f.text_field :highlight_external_link %>
+</p>
+
+<%= image_field_tag f, "page_node[page_contents_attributes][0]", :highlight_image, :field_id => "page_node_page_contents_attributes_0" %>
+</fieldset>
+
+
+<%= toggle_fieldset "Highlight #2" %>
+<p>
+  <%= f.label :highlight_2_style %><br />
+  <%= f.select :highlight_2_style, [["Family", "family_highlight"], ["Business", "business_highlight"], ["Other", "other_highlight"]] %>
+</p>
+
+<p>
+  <%= f.label :highlight_2_content %><br />
+  <%= f.simple_text_area :highlight_2_content %>
+</p>
+
+<p>
+  <%= f.helpful_label :highlight_2_link, "Internal highlight link", "Select a page on the website to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
+  <%= f.select :highlight_2_link, link_options_for_select(f.object.highlight_link, :include_blank => "No Link", :additional_links => ["Anchors", [["Online Conveyancine Form", "#online_calculator"]]]) %>
+</p>
+
+<p>
+  <%= f.helpful_label :highlight_2_ext_link, "External highlight link", "Enter a (fully qualified) URL to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
+  <%= f.text_field :highlight_2_ext_link %>
+</p>
+
+<%= image_field_tag f, "page_node[page_contents_attributes][0]", :highlight_2_image, :field_id => "page_node_page_contents_attributes_0" %>
+</fieldset>
+
+<%= toggle_fieldset "Page Documents" %>
+<%= f.advanced_text_area :document_area %>
+</fieldset>
+
+
+<%= toggle_fieldset "Video" %>
+<p>
+  <%= f.label :video_id %><br />
+  <%= f.collection_select :video_id, Video.unrecycled, :id, :name, :include_blank => "No Video" %>
+</p>
+</fieldset>
+
+<%= toggle_fieldset "Splash Page" %>
+<p>
+  <%= f.label :splash_content %><br />
+  <%= f.advanced_text_area :splash_content %>
+</p>
+
+<%= image_field_tag f, "page_node[page_contents_attributes][0]", :banner_image, :field_id => "page_node_page_contents_attributes_0" %>
+
+<p>
+  <%= f.label :banner_content %><br />
+  <%= f.text_area :banner_content %>
+</p>
+</fieldset>
+
+<% if @current_administrator.super_admin? %>
+    <%= toggle_fieldset "Button" %>
+    <%= image_field_tag f, "page_node[page_contents_attributes][0]", :button_image, :field_id => "page_node_page_contents_attributes_0" %>
+
+    <p>
+      <%= f.label :button_content %>
+      <%= f.text_field :button_content %>
+    </p>
+    </fieldset>
+<% end %>
+
+<%= toggle_fieldset "Related Content" %>
+<p>
+  <%= f.subscription_select %>
+</p>
+</fieldset>
+
+<%= toggle_fieldset "Additional Information" %>
+<p>
+  <%= f.label :navigation_title %><br />
+  <%= f.text_field :navigation_title %>
+</p>
+
+<p>
+  <%= f.label :meta_description %><br />
+  <%= f.text_area :meta_description %>
+</p>
+
+<p>
+  <%= f.label :meta_tags %><br />
+  <%= f.text_area :meta_tags %>
+</p>
+</fieldset>
+
+<fieldset>
+  <p>
+    <%= f.label "Display Contact Form?" %><br />
+    <%= f.check_box :display_contact %>
+  </p>
+
+</fieldset>
+
+
+<%= toggle_fieldset "Rich Snippet" %>
+<p>
+  <%= f.label :rich_snippet %><br />
+  <%= f.text_area :rich_snippet %>
+</p>
+</fieldset>

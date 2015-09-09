@@ -1,0 +1,59 @@
+<%= toggle_fieldset "Content", "content", true %>	
+	<p>
+	  <%= f.label :title %><br />
+	  <%= f.text_field :title %>
+	</p>
+	
+	<p>
+	  <%= f.label :main_content %><br />
+	  <%= f.advanced_text_area :main_content %>
+	</p>	
+</fieldset>
+
+<%= toggle_fieldset "Highlight" %>	
+	<p>
+	  <%= f.label :highlight_style %><br />
+	  <%= f.select :highlight_style, [["Family", "family_highlight"], ["Business", "business_highlight"], ["Other", "other_highlight"]] %>
+	</p>
+	
+	<p>
+	  <%= f.label :highlight_content %><br />
+	  <%= f.simple_text_area :highlight_content %>
+	</p>
+	
+  <p>
+    <%= f.helpful_label :highlight_link, "Internal highlight link", "Select a page on the website to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
+    <%= f.select :highlight_link, link_options_for_select(f.object.highlight_link, :include_blank => "No Link", :additional_links => ["Anchors", [["Online Conveyancine Form", "#online_calculator"]]]) %>
+  </p>
+  
+  <p>
+    <%= f.helpful_label :highlight_external_link, "External highlight link", "Enter a (fully qualified) URL to link to. Please note that if you select both an internal and external link only the internal link will be used." %><br />
+    <%= f.text_field :highlight_external_link %>
+  </p>
+  	
+	<%= image_field_tag f, "page_node[page_contents_attributes][0]", :highlight_image, :field_id => "page_node_page_contents_attributes_0" %>
+</fieldset>
+
+<%= toggle_fieldset "Additional Information" %>
+	<p>
+	  <%= f.label :navigation_title %><br />
+	  <%= f.text_field :navigation_title %>
+	</p>
+	
+	<p>
+	  <%= f.label :meta_description %><br />
+	  <%= f.text_area :meta_description %>
+	</p>
+	
+	<p>
+	  <%= f.label :meta_tags %><br />
+	  <%= f.text_area :meta_tags %>
+	</p>
+</fieldset>
+
+<%= toggle_fieldset "Rich Snippet" %>
+<p>
+  <%= f.label :rich_snippet %><br />
+  <%= f.text_area :rich_snippet %>
+</p>
+</fieldset>

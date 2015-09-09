@@ -1,0 +1,82 @@
+<% title "Events" %>
+<% hide_flash %>
+
+<h1><%=h @event.name %></h1>
+
+<p>
+<span class="date"><%=h simple_date_format @event.start_date %></span>
+<% if @event.end_date? %>
+   to <span class="date"><%=h simple_date_format @event.end_date %></span>
+<% end %>
+</p>
+
+
+<% if @event.image? %>
+  <%= image_tag @event.image.url(:show), :class=>"image_left" %>
+<% end %>
+
+<%= @event.main_content %>
+
+<div class="contact_form" id="booking_form">
+  <h1>Booking Form</h1>
+
+  <% form_tag "#booking_form"  do %>
+	  <%- flash.each do |name, msg| -%>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<%- end -%>
+    <p>
+      <%= label_tag :name %><br />
+      <%= text_field_tag :name, params[:name] %>
+    </p>
+    <p>
+      <%= label_tag :company, "Company name" %><br />
+      <%= text_field_tag :company, params[:company] %>
+    </p>
+    <p>
+      <%= label_tag :phone_number %><br />
+      <%= text_field_tag :phone_number, params[:phone_number] %>
+    </p>
+    <p>
+      <%= label_tag :email %><br />
+      <%= text_field_tag :email, params[:email] %>
+    </p>
+    <p>
+      <%= label_tag :confirm_email %><br />
+      <%= text_field_tag :confirm_email, params[:confirm_email] %>
+    </p>
+    <p>
+      <%= label_tag :no_of_places, 'No. of places required' %><br />
+      <%= text_field_tag :no_of_places, params[:no_of_places], :style => 'width:30px;' %>
+    </p>
+    <p>
+      <%= label_tag :additional_names, 'Names of any additional delegates' %><br />
+      <%= text_area_tag :additional_names, params[:additional_names] %>
+    </p>
+      
+    <!--
+    <p>
+      <%#= label_tag "Verify Identity" %><br />
+      <%#= recaptcha_tags :display => { :theme => "white" } %>
+    </p>
+    -->
+
+    <p>
+      <%= check_box_tag :privacy_policy, '1', params[:privacy_policy], :class => "checkbox check_box" %>
+      <%= label_tag "Please confirm that you have read our #{link_to "privacy policy", :controller => "web", :action => "privacy"}" %>
+    </p>
+    <p>
+      <%= submit_tag "Submit" %>
+    </p>
+  <% end %>
+</div>
+
+<hr />
+
+<p align="right" class="more">
+  <%= link_to "View all events", events_path, {:class=>"medium"} %>
+</p>
+
+<% content_for :right do  %>
+  <%= render :partial => "tags" %>
+  <%= render :partial => "dates" %>
+<% end %>

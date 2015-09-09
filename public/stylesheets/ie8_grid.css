@@ -1,0 +1,17 @@
+.ie8 .row {
+  width:1000px;
+  /*background-color:#ff0000;*/
+}
+
+.ie8 .team-member {
+  width:20%;
+  float:left;
+}
+
+.ie8 .team-list {
+  width:75%;
+}
+
+.ie7 .three {
+  width:18%;
+}

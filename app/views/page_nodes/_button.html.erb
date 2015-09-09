@@ -1,0 +1,19 @@
+<% if node.active_content.button_image? && node.active_content.button_content? %>
+
+  <% small ||= false %>
+  <% if small %>
+    <%= link_to node.active_content.button_content, url_for(node.path), {:style=>"background-image: url(#{node.active_content.button_image.url(:small)})", :"data-responsive" => node.active_content.button_image.url(:main)} %>
+  <% else %>
+    <%= link_to node.active_content.button_content, url_for(node.path), {:style=>"background-image: url(#{node.active_content.button_image.url(:main)})"} %>
+  <% end %>
+
+<% elsif node.linked_active_content %>
+  <% if node.linked_active_content.button_image? && node.linked_active_content.button_content? %>
+    <% small ||= false %>
+    <% if small %>
+      <%= link_to node.linked_active_content.button_content, url_for(node.path), {:style=>"background-image: url(#{node.linked_active_content.button_image.url(:small)})", :"data-responsive" => node.active_content.button_image.url(:main)} %>
+		<% else %>
+      <%= link_to node.linked_active_content.button_content, url_for(node.path), {:style=>"background-image: url(#{node.linked_active_content.button_image.url(:main)})"} %>
+		<% end %>
+  <% end %>
+<% end %>

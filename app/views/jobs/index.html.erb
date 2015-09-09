@@ -1,0 +1,16 @@
+<h1><%= title "Recruitment" %></h1>
+
+<% if !@jobs.empty? %>
+  <% @jobs.each do |job| %>
+    <p>
+      <h2 style="margin: 0px; padding: 0px; font-size: 14px;"><%= link_to job.name, job %></h2>
+      <span class="date"><%=h simple_date_format job.closing_date %></span>
+      <p><%= job.summary %></p>
+      <p align="right" class="more"><%= link_to "Read more", job, {:class => "small"} %></p>
+    </p>
+    <hr />
+  <% end %>
+  <%= will_paginate @jobs %>
+<% else %>
+  No Jobs to display.
+<% end %>

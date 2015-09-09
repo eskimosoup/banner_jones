@@ -1,0 +1,21 @@
+<% begin %>
+  <% cache "twitter_side", :expires_in => 600  do %>
+      <% Twitter.user_timeline("#{@team_member.twitter_link}", :count => 2).each_with_index do |tweet, index| %>
+
+          <div class="tweet">
+            <% unless tweet.retweeted_status.blank? %>
+              <%= image_tag tweet.retweeted_status.profile_image_url %>
+              <%= raw scan_for_links(tweet.retweeted_status.text) %>
+              <%= link_to "#{ tweet.created_at.strftime('%H:%M - %d/%m/%Y') }", "https://www.twitter.com/#{ tweet.user.screen_name }/statuses/#{ tweet.id }", :target => "_blank", :class => "time" %>
+            <% else %>
+              <%= image_tag tweet.profile_image_url %>
+              <%= raw scan_for_links(tweet.text) %>
+              <%= link_to "#{ tweet.created_at.strftime('%H:%M - %d/%m/%Y') }", "https://www.twitter.com/#{ tweet.user.screen_name }/statuses/#{ tweet.id }", :target => "_blank", :class => "time" %>
+            <% end %>
+          </div>      
+      <% end %>
+  <% end %>
+<% rescue Twitter::Error => e %>
+  <% logger.error "Twitter broke due to: #{e}" %>
+  <p>Twitter is not responding</p>
+<% end %>

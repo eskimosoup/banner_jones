@@ -1,0 +1,22 @@
+<% hide_right %>
+<% content_for :left do %>
+  <%= render "team_categories/index" %>
+<% end %>
+
+<h1><%= title @title %></h1>
+
+<% if @team_members.length > 0 %>
+
+<div class="team_list">
+
+  <% for team_member in @team_members %>
+    <%= render "team_members/team_member", :team_member => team_member %>
+  <% end %>
+</div>
+ <%= will_paginate @team_members %>
+  
+<% else %>
+
+  <p>No Team Members to Display<p>
+
+<% end %>

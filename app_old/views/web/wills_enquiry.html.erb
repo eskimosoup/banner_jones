@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="lt-ie9 ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="lt-ie9 ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= h("#{SiteSetting.find_by_name("Site Name").try(:value)} - #{yield(:title) || "Untitled"}") %></title>
+  <link rel="stylesheet" href="/stylesheets/foundation.css" />
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+  <%= javascript_include_tag "foundation/foundation.min.js" %>
+  <%= javascript_include_tag "foundation/app.js" %>
+
+
+  <%= stylesheet_link_tag "webstyle.css" %>
+  <%= stylesheet_link_tag "tnymc.css" %>
+  <%= stylesheet_link_tag "ie8_grid.css" %>
+  <% if @current_page_node && @current_page_node.style %>
+      <%= stylesheet_link_tag @current_page_node.style %>
+  <% end %>
+  <% if @current_page_node && @current_page_node.ancestors.include?(PageNode.business_node.first) || @current_page_node == PageNode.business_node.first %>
+      <%= stylesheet_link_tag "business.css" %>
+  <% elsif @current_page_node && @current_page_node.ancestors.include?(PageNode.family_node.first) || @current_page_node == PageNode.family_node.first %>
+      <%= stylesheet_link_tag "family.css" %>
+  <% else %>
+      <%= stylesheet_link_tag "webstyle_default.css" %>
+  <% end %>
+
+
+
+  <% if yield(:javascript) -%>
+      <%= yield :javascript %>
+  <% else -%>
+      <%= javascript_include_tag "prototype" %>
+      <%= javascript_include_tag "scriptaculous" %>
+      <%= javascript_include_tag "p7exp" %>
+  <% end -%>
+
+  <% if @include_tinymce_script -%>
+      <%= javascript_include_tag "tiny_mce/tiny_mce.js" %>
+      <%= javascript_include_tag "tiny_mce_config" %>
+  <% end -%>
+
+  <link rel="stylesheet" href="/stylesheets/media_queries.css" />
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+
+<body>
+<% hide_contact %>
+
+<div class="row">
+  <div class="twelve columns">
+    <h1><%= title "Online Wills Query Form" %></h1>
+    <p>If you would like to contact an Online Wills Advisor regarding your Online Will please fill out the details below and press submit.  Someone will then contact you shortly.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="six columns">
+<div class="contact_form">
+  <% form_tag :controller => "web", :action => "deliver_wills_enquiry" do %>
+    <p>
+      <%= label_tag :title %><br />
+      <%= select_tag :title, options_for_select([["Select...", nil], "Mr.", "Miss.", "Mrs."], params[:title]) %>
+    </p>
+    <p>
+      <%= label_tag :first_name %><br />
+      <%= text_field_tag :first_name, params[:first_name] %>
+    </p>
+    <p>
+      <%= label_tag :surname %><br />
+      <%= text_field_tag :surname, params[:surname] %>
+    </p>
+    <p>
+      <%= label_tag :tel %><br />
+      <%= text_field_tag :tel, params[:tel] %>
+    </p>
+    <p>
+      <%= label_tag :email %><br />
+      <%= text_field_tag :email, params[:email] %>
+    </p>
+    <p>
+      <%= label_tag :confirm_email %><br />
+      <%= text_field_tag :confirm_email, params[:confirm_email] %>
+    </p>
+    <p class="clear">
+      <%= label_tag :enquiry %><br />
+      <%= text_area_tag :enquiry, params[:enquiry] %>
+    </p>
+
+    <p>
+      <%#= label_tag "Verify Identity" %><br />
+      <%#= recaptcha_tags :display => { :theme => "white" } %>
+    </p>
+    <p>
+      <%= submit_tag "Submit" %>
+    </p>
+  <% end %>
+</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <small>
+      <p>
+        <p>Your details will not be passed to any third party.</p>
+      </p>
+    </small>
+  </div>
+</div>
+
+
+</body>

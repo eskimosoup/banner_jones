@@ -1,0 +1,43 @@
+
+<ul id="p7menubar" class="hide-for-small">
+  <% for page_node in PageNode.active.position.roots.navigation %>
+    <%# if [191].include?(page_node.id) %>
+      <!--<li>--><%#= link_to page_node.navigation_title, url_for(page_node.path) %><!--</li>-->
+    <%# end %>
+  
+    <% if [196].include?(page_node.id) %>
+      <li><%= link_to page_node.navigation_title, url_for(page_node.path) %>
+      <% children = PageNode.children(page_node.id).active.navigation.position %>
+      <% unless children.blank? %>
+        <ul>
+        <% for child in children %>
+          <li><%= link_to child.navigation_title, url_for(child.path) %></li>
+        <% end %>
+        </ul>
+      <% end %>
+        </li>
+        
+    <% end %>
+    
+    <% if [197].include?(page_node.id) %>
+      <li><%= link_to page_node.navigation_title, url_for(page_node.path) %>
+      <% children = PageNode.children(page_node.id).active.navigation.position %>
+      <% unless children.blank? %>
+        <ul>
+        <% for child in children %>
+          <li><%= link_to child.navigation_title, url_for(child.path) %></li>
+        <% end %>
+        </ul>
+      <% end %>
+        </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+
+
+
+
+  
+

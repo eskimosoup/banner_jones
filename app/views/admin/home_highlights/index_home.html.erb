@@ -1,0 +1,22 @@
+<% title "Home Page" %>
+
+<div id="banner" style="border: 1px solid #000000; padding: 40px 0px 40px 0px; text-align: center; margin-bottom: 20px;">
+  <%= link_to "Home Page Highlights", admin_home_highlights_path %>
+</div>
+
+<div id="banner" style="border: 1px solid #000000; padding: 10px 0px 10px 0px; text-align: center;">
+  <p>
+    <%= link_to "Button 1", edit_admin_homepage_button_path(HomepageButton.get(1)) %>
+     | 
+    <%= link_to "Button 2", edit_admin_homepage_button_path(HomepageButton.get(2)) %>
+     | 
+    <%= link_to "Button 3", edit_admin_homepage_button_path(HomepageButton.get(3)) %>
+  </p>
+  <p>
+    <%= link_to "Button 4", edit_admin_homepage_button_path(HomepageButton.get(4)) %>
+     | 
+    <%= link_to "Button 5", edit_admin_homepage_button_path(HomepageButton.get(5)) %>
+     | 
+    <%= link_to "Button 6", edit_admin_homepage_button_path(HomepageButton.get(6)) %>
+  </p>
+</div>

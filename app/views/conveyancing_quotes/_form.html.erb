@@ -1,0 +1,57 @@
+<br />
+<% form_for @conveyancing_quote, :html => {:multipart => true} do |f| %>
+
+  <%= f.error_messages :id => "flash_error", :header_message => nil %>
+
+  <fieldset>
+  <legend>Your Details</legend>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.select :title, ConveyancingQuote.titles %>
+  </p>
+
+  <p>
+    <%= f.label :first_names %><br />
+    <%= f.text_field :first_names %>
+  </p>
+
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  </fieldset>
+  
+  <fieldset>
+  <legend>Conveyancy Details</legend>
+  <p>
+    <%= f.label :date, "When are you looking to instruct?" %><br /><br />
+    <%= f.select :date, ConveyancingQuote.dates %>
+  </p>
+  
+  <p>
+    <%= f.label :conveyancing_type %><br />
+    <%= f.select :conveyancing_type, ConveyancingQuote.conveyancing_types %>
+  </p>
+  </fieldset>
+  
+  <%= observe_field "conveyancing_quote_conveyancing_type", :url => {:action => "update_type_fields"}, :with => "conveyancing_type" %>
+  
+  <%= render f.object.form_partial || "conveyancing_quotes/form/sale", :f => f %>
+  
+  <% if @conveyancing_quote.form_partial.nil? %>
+    <p><%= f.submit "Continue", :style=>"margin-left: 0px;" %></p>
+  <% else %>
+    <p><%= f.submit "Get a Quote", :style=>"margin-left: 0px;" %></p>
+  <% end %>
+  
+<% end %>

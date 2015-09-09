@@ -1,0 +1,28 @@
+<% hide_flash %>
+
+<h1><%= title("Thank You") %></h1>
+
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<% if params[:contact_us] -%>
+  <!-- Google Code for Enquiry Thank you Conversion Page -->
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 1038213147;
+  var google_conversion_language = "en";
+  var google_conversion_format = "1";
+  var google_conversion_color = "ffffff";
+  var google_conversion_label = "5jijCMG_ZRCbwIfvAw";
+  var google_remarketing_only = false;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+      <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1038213147/?label=5jijCMG_ZRCbwIfvAw&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+<% end -%>

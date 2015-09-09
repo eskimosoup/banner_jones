@@ -1,0 +1,7 @@
+<% hide_left %>
+<% hide_right %>
+<% page = PageNode.find_by_name("Cookie Policy").active_content %>
+
+<h1><%= title("Cookie Policy") %></h1>
+
+<%= page.main_content %>
