@@ -10,6 +10,8 @@ class Job < ActiveRecord::Base
   named_scope :site_search, lambda{|search_term| {
     :conditions => [ "name LIKE :search OR summary LIKE :search", {:search => "%#{search_term}%"} ]
   } }
+  named_scope :in_office, lambda{|office_ids| { :joins => :offices, :conditions => ["offices.id IN (?)", office_ids] }}
+  named_scope :job_id_not, lambda{|job_id| { :conditions => ["jobs.id != ?", job_id] }}
 
   has_attached_document :application_pack
   has_documents
