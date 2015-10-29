@@ -110,10 +110,7 @@
       <div class="logo">
         <%= link_to image_tag("logo.gif", :alt => SiteSetting.find_by_name("Site Name").try(:value), :title => SiteSetting.find_by_name("Site Name").try(:value), :border => "0", :hspace => "0", :vspace => "0"), {:controller => 'web', :action => 'index'} %>
       </div>
-      <img src="./../images/recommended/UK_top_tier_firms_2015.jpg" alt="The Legal 500 - The Clients Guide to Law Firms" width="148" height="214" border="0"></a>
       <%= image_tag "legal-500.jpg", :alt => "", :class => "legal-500 hide-for-small" %>
-
-      <!-- <%= link_to_page image_tag("logo_fixed_fee.gif", :alt => "Fixed Fee Promise", :title => "Fixed Fee Promise", :border => "0", :hspace => "0", :vspace => "0", :class => "logo"), 'Fixed Fee Promise' %> -->
     </div>
 
     <div class="top_right six mobile-four columns">
@@ -350,12 +347,15 @@
 
     <div class="footer_awards">
       <h3>Our Awards</h3>
-        <%#= link_to_page image_tag("logo_awards_top_tier.gif", :alt => "ICFM Highly Commended Top Tier", :title => "ICFM Highly Commended Top Tier", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
-        <%= link_to_page image_tag("logo_awards_top_tier.gif", :alt => "ICFM Highly Commended Top Tier", :title => "ICFM Highly Commended Top Tier", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
-        <%= link_to_page image_tag("logo_awards_acqcountry.gif", :alt => "ACQ Counrty Awards 2009", :title => "ACQ Counrty Awards 2009", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 30px;"), 'Awards' %>
-        <%= link_to_page image_tag("logo_awards_business_awards.gif", :alt => "Derbyshire Times Business Awards", :title => "Derbyshire Times Business Awards", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
-        <%= link_to_page image_tag("logo_best_2011.gif", :alt => "Derbyshire's Best Finalist 2011", :title => "Derbyshire's Best Finalist 2011", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 20px;"), 'Awards' %>
-        <%= link_to_page image_tag("logo_global_2011.gif", :alt => "Global Awards 2011 Winner", :title => "Global Awards 2011 Winner", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 20px;"), 'Awards' %>
+      <div class="clear"></div>
+      <%= link_to_page image_tag("logo_awards_top_tier.gif", :alt => "ICFM Highly Commended Top Tier", :title => "ICFM Highly Commended Top Tier", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
+      <%= link_to_page image_tag("logo_awards_acqcountry.gif", :alt => "ACQ Counrty Awards 2009", :title => "ACQ Counrty Awards 2009", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 30px;"), 'Awards' %>
+      <%= link_to_page image_tag("logo_awards_business_awards.gif", :alt => "Derbyshire Times Business Awards", :title => "Derbyshire Times Business Awards", :border => "0", :hspace => "0", :vspace => "0"), 'Awards' %>
+      <%= link_to_page image_tag("logo_best_2011.gif", :alt => "Derbyshire's Best Finalist 2011", :title => "Derbyshire's Best Finalist 2011", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 20px;"), 'Awards' %>
+      <%= link_to_page image_tag("logo_global_2011.gif", :alt => "Global Awards 2011 Winner", :title => "Global Awards 2011 Winner", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 20px;"), 'Awards' %>
+      <div class="clear"></div>
+      <%= link_to_page image_tag("2015_YLA_highly_commended_footer.jpg", :alt => "Yorkshire Legal Awards 2015", :title => "Yorkshire Legal Awards 2015", :border => "0", :hspace => "0", :vspace => "0", :style=>"margin-top: 20px;"), 'Awards' %>
+      </div>
     </div>
 <div class="clear"></div>
   </div>
