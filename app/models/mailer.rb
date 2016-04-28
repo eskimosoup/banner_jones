@@ -7,8 +7,7 @@ class Mailer < ActionMailer::Base
     @subject            = "Contact Us Form Completed by #{@completed_by} - #{SiteSetting.like("Site Name").first.value}"
     @from               = SiteSetting.like("Email").first.value
     @recipients         = SiteSetting.like("Email").first.value
-    #@from               = "ade@eskimosoup.co.uk"
-    #@recipients         = "ade@eskimosoup.co.uk"
+    @bcc                = ["tom@optimised.today", "amie@optimised.today"]
     @body[:enquiry]     = enquiry
     @body[:title]       = title
     @body[:name]        = name
@@ -26,8 +25,6 @@ class Mailer < ActionMailer::Base
     @subject            = "Will Enquiry Form Completed by #{@completed_by} - #{SiteSetting.like("Site Name").first.value}"
     @from               = "OnlineWills@bannerjones.co.uk"
     @recipients         = "OnlineWills@bannerjones.co.uk"
-    #@from               = "ade@eskimosoup.co.uk"
-    #@recipients         = "ade@eskimosoup.co.uk"
     @body[:enquiry]     = enquiry
     @body[:title]       = title
     @body[:name]        = name
